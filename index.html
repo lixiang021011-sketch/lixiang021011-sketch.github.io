@@ -132,10 +132,10 @@
       <figure><img src="assets/fallenangel-settlement.png" alt="Settlement pipeline with interest kept outside the amplifier" loading="lazy"><figcaption>Settlement: base → amplification → floor → cap, with interest deliberately outside those steps.</figcaption></figure>
     </div>
     <div class="quotebox">
-      <strong>What the numbers said.</strong> A balance simulation (15 runs × 5 seeds × 3 skill tiers) put per-song income at
-      <strong>113 / 116.3 / 146.1</strong>. The gap between beginner and normal is <strong>3.3</strong> — the skill gradient is
-      too thin at low skill, and that finding is written in the report rather than smoothed over. The report also lists what the
-      model does <em>not</em> cover: failure, interruption, real purchase decisions, player variance.
+      <strong>What came out of it.</strong> The editor exists because charts had to be authored by hand — but looking back, it may be
+      worth more than the game it was built for. That turned out to be a pattern rather than a one-off: a quiz program made for my own
+      exam became a general-purpose study engine, and using AI to build games led to Game Forge. Valuable things tend to appear as
+      by-products of the work — but only when the work involves real testing and real trade-offs.
     </div>
     <figure><img src="assets/fallenangel-verification.png" alt="What is checked: 95 batch-mode checks, 27 geometry checks, transactional saves, the simulation" loading="lazy"><figcaption>Automation verifies state; people verify feel — the two are kept apart on purpose.</figcaption></figure>
     <p class="linkline"><a href="https://github.com/lixiang021011-sketch/FallenAngel">Repository on GitHub</a></p>
@@ -218,7 +218,7 @@
     <div class="stat"><b>95</b><span>batch-mode checks on FallenAngel, plus 27 icon geometry checks</span></div>
     <div class="stat"><b>11</b><span>automated tests on Game Forge, including two regressions for real defects</span></div>
     <div class="stat"><b>730</b><span>notes verified in a zero-difference chart ↔ MusicXML round trip</span></div>
-    <div class="stat"><b>15×5×3</b><span>runs × seeds × skill tiers in the balance simulation</span></div>
+    <div class="stat"><b>2</b><span>design choices inside the chart editor: cross-format import, and a horizontal DAW-style authoring view</span></div>
   </div>
 </section>
 
