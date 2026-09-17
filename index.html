@@ -49,6 +49,14 @@
   figure{margin:18px 0;}
   figure img{width:100%;display:block;border:1px solid var(--line);border-radius:12px;background:#fff;}
   figcaption{color:var(--muted);font-size:14px;margin-top:8px;}
+  figure img{cursor:zoom-in;}
+  .zoomhint{color:var(--muted);font-size:13.5px;margin:6px 0 0;}
+  #lb{position:fixed;inset:0;background:rgba(10,12,16,.93);display:none;align-items:center;justify-content:center;z-index:60;padding:24px;}
+  #lb.on{display:flex;}
+  #lb img{max-width:96vw;max-height:86vh;width:auto;height:auto;border-radius:8px;box-shadow:0 12px 48px rgba(0,0,0,.55);background:#fff;}
+  #lb .cap{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#c9d2de;font-size:14px;padding:0 28px;line-height:1.45;}
+  #lb .open{position:absolute;top:16px;left:20px;color:#c9d2de;font-size:13.5px;}
+  #lb .close{position:absolute;top:8px;right:14px;color:#fff;font-size:30px;line-height:1;background:none;border:none;cursor:pointer;}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   .card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff;}
@@ -104,7 +112,7 @@
 
 <section id="work" class="wrap">
   <h2>Selected work</h2>
-  <p class="secsub">Four projects, each with the problem it answers, what exists today, and how it is checked.</p>
+  <p class="secsub">Four projects, each with the problem it answers, what exists today, and how it is checked. <strong>Click any figure to enlarge it</strong> — the diagrams are drawn at full resolution and the small labels only become readable at that size.</p>
 
   <!-- FallenAngel -->
   <div class="project">
@@ -120,6 +128,7 @@
       <li><strong>One song, many charts:</strong> you perform the instrument's own track — the bass, the riff, the chords — so you hear parts that normally disappear under the melody, and you cover one seat rather than the whole song.</li>
       <li><strong>Honest status:</strong> the run structure and the out-of-run build framework are demoable; the playing core is being polished; the in-run build layer is scoped but not yet designed in detail.</li>
     </ul>
+    <figure><img src="assets/fallenangel-editor.png" alt="The in-engine chart editor with a real chart loaded" loading="lazy"><figcaption>The chart editor itself, running inside Unity with one of the internal test charts loaded (<code>mecha_tribe.json</code>, BPM 180, 105 s of audio). Note types, snap division, offset nudging, the waveform and the live validity checks all live in this one window. The interface is in Chinese — it is a tool built for myself.</figcaption></figure>
     <div class="two">
       <figure><img src="assets/fallenangel-loop.png" alt="Two loops: a run feeds the permanent layer and changes the next run" loading="lazy"><figcaption>The two layers: a run, and the permanent progression it settles into.</figcaption></figure>
       <figure><img src="assets/fallenangel-route.png" alt="The route map: nine nodes with one paid fork" loading="lazy"><figcaption>The route as configured: nine nodes, one paid fork at fare 40. Icons are the shipped UI assets.</figcaption></figure>
@@ -232,6 +241,55 @@
   This page is a summary. The full project manual — five chapters, twenty figures, the systems explained from the configuration up — is available as
   <a href="assets/xiang-li-project-manual.pdf">a 30-page PDF</a>.
 </footer>
+
+<div id="lb" aria-hidden="true">
+  <a class="open" href="#" target="_blank" rel="noopener">Open full size ↗</a>
+  <button class="close" aria-label="Close">&times;</button>
+  <img alt="">
+  <div class="cap"></div>
+</div>
+
+<script>
+(function () {
+  var lb = document.getElementById("lb");
+  var lbImg = lb.querySelector("img");
+  var cap = lb.querySelector(".cap");
+  var openLink = lb.querySelector(".open");
+
+  function open(src, text) {
+    lbImg.src = src;
+    openLink.href = src;
+    cap.textContent = text || "";
+    lb.classList.add("on");
+    lb.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+  function close() {
+    lb.classList.remove("on");
+    lb.setAttribute("aria-hidden", "true");
+    lbImg.removeAttribute("src");
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll("figure").forEach(function (fig) {
+    var img = fig.querySelector("img");
+    if (!img) return;
+    var captionEl = fig.querySelector("figcaption");
+    var caption = captionEl ? captionEl.textContent : "";
+    img.addEventListener("click", function (e) {
+      e.preventDefault();
+      open(img.getAttribute("src"), caption);
+    });
+  });
+
+  lb.addEventListener("click", function (e) {
+    if (e.target === lb || e.target.classList.contains("close")) close();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && lb.classList.contains("on")) close();
+  });
+})();
+</script>
 
 </body>
 </html>
