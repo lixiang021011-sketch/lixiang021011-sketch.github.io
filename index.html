@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xiang Li — Game systems, tools and verification</title>
+<meta name="description" content="Game designer working on systems, numbers and the tooling around them. FallenAngel, Game Forge, Bell Garden, StylesVN.">
+<style>
+  :root{
+    --ink:#14171c; --muted:#5d6875; --line:#e3e7ee; --accent:#2f6fed; --soft:#f6f8fb;
+    --serif:Georgia,"Times New Roman","Songti SC",serif;
+    --sans:-apple-system,"Segoe UI","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#fff;color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:16.5px;-webkit-font-smoothing:antialiased;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+
+  nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;}
+  nav .name{font-weight:650;letter-spacing:-.01em;}
+  nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;font-size:14.5px;}
+  nav a{color:var(--muted);}
+  nav a:hover{color:var(--accent);}
+
+  header{padding:72px 0 40px;}
+  h1{font-family:var(--serif);font-size:44px;line-height:1.12;margin:0 0 14px;letter-spacing:-.5px;}
+  .lede{font-size:19px;color:#31363d;max-width:44em;}
+  .avail{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{font-size:13.5px;border:1px solid var(--line);background:var(--soft);border-radius:99px;padding:3px 12px;color:var(--muted);}
+  .pill.accent{border-color:#c7dbff;background:#eef4ff;color:#1d4ed8;}
+  .cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px;}
+  .btn{display:inline-block;border:1.5px solid var(--accent);color:#fff;background:var(--accent);border-radius:9px;padding:10px 18px;font-size:15px;font-weight:600;}
+  .btn.ghost{background:#fff;color:var(--accent);}
+  .btn:hover{text-decoration:none;filter:brightness(1.05);}
+
+  section{padding:44px 0;border-top:1px solid var(--line);}
+  h2{font-family:var(--serif);font-size:28px;margin:0 0 6px;letter-spacing:-.3px;}
+  .secsub{color:var(--muted);margin:0 0 28px;font-size:16px;}
+  h3{font-size:21px;margin:0 0 4px;}
+  .hook{font-weight:600;color:#1f242b;margin:0 0 12px;}
+  .project{margin-bottom:52px;}
+  .project:last-child{margin-bottom:0;}
+  .meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 16px;}
+  ul.tight{margin:0 0 18px;padding-left:20px;}
+  ul.tight li{margin:5px 0;}
+  figure{margin:18px 0;}
+  figure img{width:100%;display:block;border:1px solid var(--line);border-radius:12px;background:#fff;}
+  figcaption{color:var(--muted);font-size:14px;margin-top:8px;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff;}
+  .card .t{font-weight:650;margin-bottom:4px;}
+  .card .d{font-size:14.5px;color:var(--muted);}
+  .quotebox{border-left:4px solid var(--accent);background:#f6f9ff;border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px;}
+  .stat{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--soft);}
+  .stat b{display:block;font-size:22px;letter-spacing:-.5px;}
+  .stat span{font-size:13.5px;color:var(--muted);}
+  footer{padding:40px 0 80px;color:var(--muted);font-size:14.5px;border-top:1px solid var(--line);}
+  .contact a{font-weight:600;}
+  @media (max-width:760px){
+    h1{font-size:32px;} h2{font-size:23px;}
+    .two,.three,.stats{grid-template-columns:1fr;}
+    header{padding:44px 0 26px;}
+    nav ul{gap:12px;font-size:13.5px;}
+    body{font-size:16px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="name">Xiang Li</span>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#how">How I work</a></li>
+      <li><a href="assets/xiang-li-project-manual.pdf">Manual (PDF)</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="wrap">
+  <h1>Game systems, tools and verification.</h1>
+  <p class="lede">
+    I am a game designer working on <strong>systems and the tooling around them</strong> — the rules, the numbers,
+    the tools other people use to author content with those rules, and the checks that tell me whether any of it works.
+    I design, build and verify my own projects end to end.
+  </p>
+  <div class="avail">
+    <span class="pill accent">Available for a 6-month internship from February 2027</span>
+    <span class="pill">Amsterdam</span>
+    <span class="pill">32 hours / week</span>
+    <span class="pill">MSc Business Administration (International Business), University of Amsterdam</span>
+  </div>
+  <div class="cta">
+    <a class="btn" href="assets/xiang-li-project-manual.pdf">Download the project manual (30 pages)</a>
+    <a class="btn ghost" href="mailto:lixiang021011@gmail.com">Email me</a>
+  </div>
+</header>
+
+<section id="work" class="wrap">
+  <h2>Selected work</h2>
+  <p class="secsub">Four projects, each with the problem it answers, what exists today, and how it is checked.</p>
+
+  <!-- FallenAngel -->
+  <div class="project">
+    <h3>FallenAngel — a rhythm game where songs are encounters, not trophies</h3>
+    <p class="hook">Rhythm games consume their own music: once you have FC'd or AP'd a song, you rarely come back to it. FallenAngel puts songs inside a run-based journey, so a song becomes a challenge you meet again instead of a trophy you retire.</p>
+    <div class="meta">
+      <span class="pill">Unity 2022.3 / C#</span><span class="pill">Android + PC</span>
+      <span class="pill">Design, systems, tooling, verification</span><span class="pill">75 commits · tag v0.3.0</span>
+    </div>
+    <ul class="tight">
+      <li><strong>The problem:</strong> players "collect" a song (收曲) — full combo or all perfect — and move on. The content is consumed by the act of mastering it, and the only reason to keep playing is to get better.</li>
+      <li><strong>The answer:</strong> a run is a journey through a short map where songs return as present challenges, never permanent ones. Difficulty rises with depth and the player's <em>build</em> is what offsets it — instead of a fixed chart the player grows into.</li>
+      <li><strong>One song, many charts:</strong> you perform the instrument's own track — the bass, the riff, the chords — so you hear parts that normally disappear under the melody, and you cover one seat rather than the whole song.</li>
+      <li><strong>Honest status:</strong> the run structure and the out-of-run build framework are demoable; the playing core is being polished; the in-run build layer is scoped but not yet designed in detail.</li>
+    </ul>
+    <div class="two">
+      <figure><img src="assets/fallenangel-loop.png" alt="Two loops: a run feeds the permanent layer and changes the next run" loading="lazy"><figcaption>The two layers: a run, and the permanent progression it settles into.</figcaption></figure>
+      <figure><img src="assets/fallenangel-route.png" alt="The route map: nine nodes with one paid fork" loading="lazy"><figcaption>The route as configured: nine nodes, one paid fork at fare 40. Icons are the shipped UI assets.</figcaption></figure>
+    </div>
+    <div class="two">
+      <figure><img src="assets/fallenangel-talent.png" alt="The 24-node talent tree with three free junctions" loading="lazy"><figcaption>24 talent nodes — 21 purchasable, 3 free junctions that let a build change lanes.</figcaption></figure>
+      <figure><img src="assets/fallenangel-settlement.png" alt="Settlement pipeline with interest kept outside the amplifier" loading="lazy"><figcaption>Settlement: base → amplification → floor → cap, with interest deliberately outside those steps.</figcaption></figure>
+    </div>
+    <div class="quotebox">
+      <strong>What the numbers said.</strong> A balance simulation (15 runs × 5 seeds × 3 skill tiers) put per-song income at
+      <strong>113 / 116.3 / 146.1</strong>. The gap between beginner and normal is <strong>3.3</strong> — the skill gradient is
+      too thin at low skill, and that finding is written in the report rather than smoothed over. The report also lists what the
+      model does <em>not</em> cover: failure, interruption, real purchase decisions, player variance.
+    </div>
+    <figure><img src="assets/fallenangel-verification.png" alt="What is checked: 95 batch-mode checks, 27 geometry checks, transactional saves, the simulation" loading="lazy"><figcaption>Automation verifies state; people verify feel — the two are kept apart on purpose.</figcaption></figure>
+    <p class="linkline"><a href="https://github.com/lixiang021011-sketch/FallenAngel">Repository on GitHub</a></p>
+  </div>
+
+  <!-- Game Forge -->
+  <div class="project">
+    <h3>Game Forge — the dashboard I built to run my own projects</h3>
+    <p class="hook">A local tool that scans the machine for game projects, launches any of them, and turns each project's README, tasks and Git state into the next three actionable steps.</p>
+    <div class="meta">
+      <span class="pill">Node.js, zero dependencies</span><span class="pill">11 automated tests</span>
+      <span class="pill">Local only — never uploads</span>
+    </div>
+    <ul class="tight">
+      <li>Detects projects by real markers and explicitly distrusts vendor files — a fix that came out of a real failure (a leftover bundle directory registered as a project), now covered by a regression test.</li>
+      <li>Deliberately small side effects: one file written per action, no project code touched, no commits made on my behalf.</li>
+      <li>"Advance" turns a project's README, TODOs and Git state into three next steps — with a written evidence file showing how the same project produces different suggestions when its state changes.</li>
+    </ul>
+    <div class="two">
+      <figure><img src="assets/gameforge-dashboard.jpg" alt="Game Forge dashboard in demo mode" loading="lazy"><figcaption>The dashboard in demo mode: project state and Git state in one view.</figcaption></figure>
+      <figure><img src="assets/gameforge-advance.jpg" alt="Advance generating three next steps for a project with no Git" loading="lazy"><figcaption>Advance on a project with no Git: three next steps and the prompt behind them.</figcaption></figure>
+    </div>
+  </div>
+
+  <!-- Bell Garden -->
+  <div class="project">
+    <h3>Bell Garden — a metroidvania vertical slice</h3>
+    <p class="hook">Nine areas, three abilities and a three-phase boss, in a slice that plays itself to completion as a regression check.</p>
+    <div class="meta">
+      <span class="pill">Unity</span><span class="pill">Windows + Android</span><span class="pill">In progress</span>
+    </div>
+    <ul class="tight">
+      <li>Abilities gate classes of space rather than single doors, so the map communicates progress by itself.</li>
+      <li>Every enemy type telegraphs and punishes, so fights are about timing rather than a bigger number.</li>
+      <li>I audited the first version against open-source examples of the genre and then <strong>rewrote</strong> the systems and the art rather than patching a structure I no longer trusted.</li>
+    </ul>
+    <div class="two">
+      <figure><img src="assets/bellgarden-title.jpg" alt="Bell Garden title screen" loading="lazy"><figcaption>Vertical slice: 9 areas, 15 rooms, 3 abilities.</figcaption></figure>
+      <figure><img src="assets/bellgarden-map.jpg" alt="Bell Garden map view" loading="lazy"><figcaption>The map is a first-class feature, not a debug overlay — a 15-room map has to stay legible.</figcaption></figure>
+    </div>
+  </div>
+
+  <!-- StylesVN -->
+  <div class="project">
+    <h3>StylesVN — a narrative pipeline where the script is data</h3>
+    <p class="hook">A full-length visual novel built to test one idea: that a script can drive everything. Nine chapters, 495 staged instructions, 437 lines of dialogue, ~22,600 characters.</p>
+    <div class="meta">
+      <span class="pill">Unity 2022.3 LTS</span><span class="pill">Windows + Android</span>
+      <span class="pill">In progress</span><span class="pill">Non-commercial fan work</span>
+    </div>
+    <ul class="tight">
+      <li>Every beat is data — background, speaker, portrait, sound, transition — so adding a scene never touches the engine.</li>
+      <li>One command compiles, validates the content and then plays the entire story to its ending: a two-second feedback loop instead of a two-minute one.</li>
+      <li>Licensing is split explicitly: MIT code, all-rights-reserved assets with a fan-work clause, itemised third-party notices.</li>
+    </ul>
+    <div class="two">
+      <figure><img src="assets/stylesvn-content.png" alt="StylesVN content pipeline and instruction schema" loading="lazy"><figcaption>The content pipeline and the instruction schema every chapter shares.</figcaption></figure>
+      <figure><img src="assets/stylesvn-library.jpg" alt="A scene background from StylesVN" loading="lazy"><figcaption>Thirteen scene backgrounds and thirteen character portraits drive the staging.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="wrap">
+  <h2>How I work</h2>
+  <p class="secsub">Three habits that show up in every project above.</p>
+  <div class="three">
+    <div class="card"><div class="t">Design claims get tested</div><div class="d">If a design says "playing better should pay better", there is a simulation behind that sentence — and its boundary conditions are written down too.</div></div>
+    <div class="card"><div class="t">Production problems become tool problems</div><div class="d">When content costs too much to produce, the answer is a tool rather than more hours. When the tool is not good enough, that answer gets abandoned rather than defended.</div></div>
+    <div class="card"><div class="t">Automation verifies state; people verify feel</div><div class="d">Automated checks confirm that systems behave. Whether something feels right is decided by playing it — the projects keep those two separated on purpose.</div></div>
+  </div>
+
+  <div class="quotebox" style="margin-top:26px;">
+    <strong>On AI, since my CV says so directly:</strong> AI writes most of the implementation. The design decisions, the scope
+    rules and the on-device testing are mine. The line I use is simple — <strong>code implements decisions that have already
+    been made; design is deciding what to make.</strong> Two decisions went the other way from "build more": auto chart
+    conversion was stopped when the output was worse than hand-authoring, and per-note instrument sampling was shelved when
+    the cost exceeded what one person could finish.
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>95</b><span>batch-mode checks on FallenAngel, plus 27 icon geometry checks</span></div>
+    <div class="stat"><b>11</b><span>automated tests on Game Forge, including two regressions for real defects</span></div>
+    <div class="stat"><b>730</b><span>notes verified in a zero-difference chart ↔ MusicXML round trip</span></div>
+    <div class="stat"><b>15×5×3</b><span>runs × seeds × skill tiers in the balance simulation</span></div>
+  </div>
+</section>
+
+<section id="contact" class="wrap contact">
+  <h2>Contact</h2>
+  <p>Happy to demo the run loop, walk through the balance model, or talk about any decision I stopped or shelved.</p>
+  <p>
+    <a href="mailto:lixiang021011@gmail.com">lixiang021011@gmail.com</a> · +31 6 17135117 ·
+    <a href="https://github.com/lixiang021011-sketch">github.com/lixiang021011-sketch</a>
+  </p>
+</section>
+
+<footer class="wrap">
+  This page is a summary. The full project manual — five chapters, twenty figures, the systems explained from the configuration up — is available as
+  <a href="assets/xiang-li-project-manual.pdf">a 30-page PDF</a>.
+</footer>
+
+</body>
+</html>
