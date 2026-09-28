@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>李响的简历：玩法、系统、美术与音乐</title>
+<meta name="description" content="游戏策划（系统方向）·游戏项目管理作品集。FallenAngel、Game Forge、钟庭 Bell Garden、StylesVN。">
+<style>
+  :root{
+    --ink:#14171c; --muted:#5d6875; --line:#e3e7ee; --accent:#2f6fed; --soft:#f6f8fb;
+    --sans:-apple-system,"Segoe UI","Microsoft YaHei","PingFang SC",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#fff;color:var(--ink);font-family:var(--sans);line-height:1.85;font-size:16.5px;-webkit-font-smoothing:antialiased;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;}
+  nav .name{font-weight:700;}
+  nav ul{display:flex;flex-wrap:wrap;gap:16px;list-style:none;margin:0;padding:0;font-size:14.5px;}
+  nav a{color:var(--muted);}
+  nav a:hover{color:var(--accent);}
+  header{padding:64px 0 32px;}
+  h1{font-size:36px;line-height:1.32;margin:0 0 16px;letter-spacing:-.5px;}
+  .lede{font-size:18px;color:#31363d;max-width:42em;}
+  .avail{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{font-size:13.5px;border:1px solid var(--line);background:var(--soft);border-radius:99px;padding:3px 12px;color:var(--muted);}
+  .pill.accent{border-color:#c7dbff;background:#eef4ff;color:#1d4ed8;}
+  .cta{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;}
+  .btn{display:inline-block;border:1.5px solid var(--accent);color:#fff;background:var(--accent);border-radius:9px;padding:10px 18px;font-size:15px;font-weight:600;}
+  .btn.ghost{background:#fff;color:var(--accent);}
+  .btn:hover{text-decoration:none;filter:brightness(1.05);}
+  section{padding:40px 0;border-top:1px solid var(--line);scroll-margin-top:72px;}
+  h2,h3{scroll-margin-top:72px;}
+  h2{font-size:25px;margin:0 0 8px;letter-spacing:-.3px;}
+  h2 .num{color:var(--accent);margin-right:8px;font-weight:700;}
+  .secsub{color:var(--muted);margin:0 0 22px;font-size:16px;}
+  h3{font-size:18px;margin:26px 0 6px;}
+  p{margin:0 0 14px;}
+  ul.tight{margin:0 0 16px;padding-left:20px;}
+  ul.tight li{margin:6px 0;}
+  figure{margin:18px 0;}
+  figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:zoom-in;}
+  figcaption{color:var(--muted);font-size:14px;margin-top:8px;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff;}
+  .card .t{font-weight:700;margin-bottom:4px;}
+  .card .d{font-size:14.5px;color:var(--muted);}
+  .quotebox{border-left:4px solid var(--accent);background:#f6f9ff;border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px;}
+  .stat{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--soft);}
+  .stat b{display:block;font-size:22px;letter-spacing:-.5px;}
+  .stat span{font-size:13.5px;color:var(--muted);}
+  table.idx{width:100%;border-collapse:collapse;font-size:15px;margin:6px 0 4px;}
+  table.idx th,table.idx td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top;}
+  table.idx th{color:var(--muted);font-weight:600;font-size:13.5px;}
+  #lb{position:fixed;inset:0;background:rgba(10,12,16,.93);display:none;align-items:center;justify-content:center;z-index:60;padding:24px;}
+  #lb.on{display:flex;}
+  #lb img{max-width:96vw;max-height:86vh;width:auto;height:auto;border-radius:8px;box-shadow:0 12px 48px rgba(0,0,0,.55);background:#fff;}
+  #lb .cap{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#c9d2de;font-size:14px;padding:0 28px;}
+  #lb .open{position:absolute;top:16px;left:20px;color:#c9d2de;font-size:13.5px;}
+  #lb .close{position:absolute;top:8px;right:14px;color:#fff;font-size:30px;line-height:1;background:none;border:none;cursor:pointer;}
+  footer{padding:36px 0 72px;color:var(--muted);font-size:14.5px;border-top:1px solid var(--line);}
+  @media (max-width:760px){
+    h1{font-size:27px;} h2{font-size:21px;}
+    .two,.three,.stats{grid-template-columns:1fr;}
+    header{padding:40px 0 24px;}
+    nav .wrap{height:auto;min-height:56px;padding:8px 0;align-items:flex-start;}
+    nav ul{gap:10px 14px;font-size:13px;row-gap:6px;}
+    body{font-size:16px;line-height:1.8;}
+    table.idx{font-size:14px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="name">李响</span>
+    <ul>
+      <li><a href="#design">玩法设计</a></li>
+      <li><a href="#impl">实现</a></li>
+      <li><a href="#system">系统</a></li>
+      <li><a href="#art">美术</a></li>
+      <li><a href="#music">音乐</a></li>
+      <li><a href="../assets/xiang-li-project-manual.pdf">手册</a></li>
+      <li><a id="langSwitch" href="../">English</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="wrap">
+  <h1>我做玩法设计、系统设计，也做支撑它们的工具。</h1>
+  <p class="lede">
+    具体是这么干的：把玩法想清楚，把系统写成策划案和配置表，把重复的活做成工具，最后自己在真机上跑一遍验收。
+    代码由 AI 按我写的规格实现，规格、禁区、验收标准是我定的。
+  </p>
+  <div class="avail">
+    <span class="pill accent">2027 届毕业生 ｜ 求职方向：游戏策划（系统方向）· 游戏项目管理</span>
+    <span class="pill">城市不限（上海 / 北京 / 深圳 / 杭州 / 广州 / 成都）</span>
+    <span class="pill">阿姆斯特丹大学 企业管理硕士（2027.08 毕业）</span>
+    <span class="pill">英语专八 · 德语 B2 · 日语 N2</span>
+  </div>
+  <div class="cta">
+    <a class="btn" href="../assets/xiang-li-project-manual.pdf">下载作品手册（30 页 PDF）</a>
+    <a class="btn ghost" href="mailto:3217106524@qq.com">邮件联系</a>
+  </div>
+</header>
+
+<section class="wrap">
+  <p class="secsub">下面按五个层面写：<strong>玩法设计 → 玩法实现 → 系统实现 → 美术 → 音乐</strong>。每一层都写清我做了什么、做到哪一步、怎么验证。图都可以点开放大。</p>
+  <table class="idx">
+    <tr><th style="width:23%">项目</th><th style="width:34%">是什么</th><th>我负责什么</th></tr>
+    <tr><td><strong>FallenAngel</strong></td><td>Unity 音游：把歌放进一条行程里重复遇到</td><td>玩法与系统设计、配置表、谱面编辑器、验收</td></tr>
+    <tr><td><strong>钟庭 Bell Garden</strong></td><td>类银河恶魔城纵向切片（Windows + Android）</td><td>玩法与关卡规则、方向决策、系统重写的指挥与验收</td></tr>
+    <tr><td><strong>Game Forge</strong></td><td>管理多个项目的本地看板工具</td><td>需求与规则设计、状态口径、验证</td></tr>
+    <tr><td><strong>StylesVN</strong></td><td>长篇视觉小说（非商业同人）</td><td>叙事管线设计：剧本即数据</td></tr>
+  </table>
+</section>
+
+<section id="design" class="wrap">
+  <h2><span class="num">①</span>玩法设计：先回答"玩家为什么再来一局"</h2>
+  <p class="secsub">我做玩法时不从"加什么功能"开始，而是先找这个品类里那个没人解决的问题。</p>
+
+  <h3>音游的问题是：它把自己的内容吃掉了</h3>
+  <p>一首歌打满连（FC）或者全 Perfect 之后，玩家基本不会再打开它。也就是说，内容被"掌握"的那一刻就被消耗完了，剩下的唯一动力只是分更高。</p>
+  <p>我的做法是把歌放进一条短行程里：一局途中会遇到的歌，下一次还会以新的难度、新的配置遇到。难度随行程深度上涨，玩家要靠一路积累起来的能力去抵消它。歌从"收藏品"变成"会再见面的对手"。</p>
+
+  <h3>一曲多谱：同一首歌，拆成乐器的声部</h3>
+  <p>一首歌按真实乐谱拆成不同声部——贝斯、riff、和弦。玩家只演奏自己选的那件乐器，于是会听到平时被主旋律盖住的部分，负责的是一个席位，而不是整首歌。</p>
+
+  <h3>第一章的定调：把"账单的重力"换成"人的重力"</h3>
+  <p>第一章叫"千禧梦核"，一句话内核是：<strong>替没能走上那条路的少年，把那条路走一遍。</strong>这句话落到机制上是一组替换——把现实里压人的东西全部拿掉，换成同样有重量、但能变成游戏动力的东西：</p>
+  <ul class="tight">
+    <li>去掉：房租、工期、交不起车费、社会身份。</li>
+    <li>换成：约定、时间、距离、告别、说不出口的话、可能见不到的人。</li>
+  </ul>
+  <p>主线就是从这里长出来的：<strong>你答应过一个人，等你能把那首曲子弹完就去找他——可你只会前半段。</strong>于是"进度"有了具体形状：你能弹到哪一段，取决于你走到了哪里；走得越远，地方越不像你认识的样子。因为有了约定，失败也不必写成死——那是"这一程没走完"。</p>
+
+  <h3>遭遇＝谱面，旅伴＝同行一段</h3>
+  <p>玩家遇到的不是"一首歌"，是<b>一首歌 × 一件乐器</b>组成的一张谱面，那就是一个关卡。乐手身份在开局选定，决定这一局你打什么谱面；同一首歌在一局里出现两次（换件乐器）是自然的——所以"一曲多谱"不只是卖点，它是这套结构成立的前提。</p>
+  <p>旅伴那条更直接：路上遇到人，请他同行一段，他陪你走完这一层，进下一层就不在了。告别时可能留下一件东西，也可能什么都没留。机制和情感在这里是同一件事——<strong>"同行一段"既是规则，也是这一章要说的东西。</strong></p>
+
+  <h3>钟庭：能力不是开门，是解锁一整类空间</h3>
+  <p>冲刺能跨过跳不过去的沟、二段跳能上到原本来不了的层、丝钩能挂上够不着的点。每拿到一个能力，地图上就有一整类空间向你打开。这样进度是地图自己讲出来的，不需要弹窗告诉玩家"你变强了"。</p>
+
+  <div class="two">
+    <figure><img src="../assets/fallenangel-difficulty.png" width="2800" height="1044" alt="难度从哪来：两款游戏都有成长，区别在于该变的是谁" loading="lazy"><figcaption>难度从哪来：两款游戏都有成长，区别在于"该变的是谁"。</figcaption></figure>
+    <figure><img src="../assets/fallenangel-loop.png" width="2800" height="1356" alt="两层结构：一局行程与它沉淀的永久成长" loading="lazy"><figcaption>两层结构：一局行程，和它沉淀下来的永久成长。</figcaption></figure>
+  </div>
+  <figure><img src="../assets/bellgarden-gating.png" width="2800" height="1042" alt="钟庭：能力即地图语法" loading="lazy"><figcaption>钟庭：每个能力打开一整类空间，进度从地图上读得出来。</figcaption></figure>
+</section>
+
+<section id="impl" class="wrap">
+  <h2><span class="num">②</span>玩法实现：我能看懂实现，也能指挥实现</h2>
+  <p class="secsub">我不写代码。但实现能不能落地、有没有跑偏，是我负责判断的。</p>
+
+  <p>我给 AI 定的规矩是写下来的，不是靠临场提醒：哪些文件可以改（比如只允许动脚本目录）、哪些必须由我在编辑器里手动操作（场景、预制体）、哪些绝对不能碰（不新增依赖包、不改工程设置）。改完必须通过两道检查——提交前跑无头编译自检，谱面和配置另有自动校验。</p>
+
+  <p>目前谱面与配置的自动校验是 <strong>21 组、340 项</strong>，全绿。我认为自动检查只能证明"系统没坏"，好不好玩必须上手——所以每个版本我都在真机上跑。</p>
+
+  <h3>一个具体的排查例子</h3>
+  <p>长条音符显示出问题时，我第一反应是"长度上限把它截断了"。实测之后这个判断被推翻：真因是渲染层级和渐变分布。我把上游开源实现逐条对照过一遍，最后按它的写法（不做长度截断、独立 mesh、显式层级）改掉。判断错了就改判断，这是我最看重的习惯。</p>
+
+  <p>钟庭里还有一条更有意思的做法：我让 AI 自己把整个切片从起点打到三阶段 Boss。每次改完手感或关卡，先看它还能不能通关——这比只看代码有没有报错可靠得多。</p>
+
+  <div class="two">
+    <figure><img src="../assets/fallenangel-verification.png" width="2800" height="1030" alt="自动化校验覆盖的内容" loading="lazy"><figcaption>自动验证状态，手感由人验证——这两件事我刻意分开。</figcaption></figure>
+    <figure><img src="../assets/bellgarden-boss.jpg" width="1280" height="720" alt="钟庭的三阶段 Boss" loading="lazy"><figcaption>三阶段 Boss：AI 会自动打到它，用来确认改动后游戏仍然走得通。</figcaption></figure>
+  </div>
+</section>
+
+<section id="system" class="wrap">
+  <h2><span class="num">③</span>系统实现：策划案、配置表和表结构</h2>
+  <p class="secsub">系统设计最后一定会落到两样东西上：一份别人看得懂的策划案，和一张能反复修改的配置表。</p>
+
+  <h3>装备与宝石系统（SAGI Games）</h3>
+  <p>我独立负责这个系统从设计到落地的全过程：写系统设计与 UE 文档、做配置表、交给美术和程序，然后跟进实装和验收。另外负责道具配置、地图配置与地图编辑。</p>
+
+  <h3>表驱动的结构（FallenAngel）</h3>
+  <p>我的做法是把系统写成结构，而不是写死在代码里：现在能跑的实现里，路线与成长都是表驱动的——调整结构不用改代码，改表就行。这也是我一个人能跑完"设计 → 实装 → 验收"三段的底气。</p>
+  <p>第一章的新设计已经定稿（2026-09-23）：规模扩到 <strong>3 层、7 场演奏、16 个节点</strong>，含六类节点（演奏、硬仗、商店、事件、休息、终房）。先把设计写清楚再动手，是我固定的顺序。</p>
+  <h3>StylesVN：剧本即数据</h3>
+  <p>故事的每一个节拍——背景、说话人、立绘、音效、转场——都是数据，所以加一场戏不用动引擎。之后一条命令做完三件事：编译剧本、校验内容、把整个故事一路播放到结局。反馈回路从两分钟压成两秒。九章、495 条演出指令、437 行对白。</p>
+
+  <h3>Game Forge：把"这个项目现在什么状态"做成工具</h3>
+  <p>当实现大部分由 AI 完成，我的工作位置也变了：不再靠通读代码判断进度，而是靠把它跑起来判断。伴随的成本是周围那些事——为了知道状态而打开工程、向一个对项目没有记忆的助手反复确认、在六个项目之间来回切换。Game Forge 不用打开任何东西就回答两个问题：每个项目现在是什么状态、接下来该做的三件事是什么。</p>
+
+  <p class="secsub" style="margin-top:6px;">说明：局内的物品与经济系统正在整体重做，所以这一节只讲已经稳定的部分——新版落地之后我再补细节。</p>
+
+  <figure><img src="../assets/fallenangel-route.png" width="2800" height="818" alt="路线图：九个节点，其中一处是分叉口" loading="lazy"><figcaption>路线图：九个节点，其中一处是分叉口。图标用的是游戏内实际资源。</figcaption></figure>
+</section>
+
+<section id="art" class="wrap">
+  <h2><span class="num">④</span>美术：先把基调定成规则，再交给执行</h2>
+  <p class="secsub">FallenAngel 第一章的基调叫"千禧梦核"——2000 年代中国孩子的童年影像。定基调不是写几个形容词，是定下能执行的规矩。设计稿 2026-09-23 定稿，实现还没开始。</p>
+
+  <p><strong>规矩一：只取"光、空、重复"三样，不用诡异、监视、恐怖。</strong>梦核有两个方向——温柔的空和诡异的空。后者只允许在"越远越离开现实"的深处放一点点，用来制造惊叹，绝不用来制造恐惧。</p>
+
+  <p><strong>规矩二：每个元素都要过一道筛——摸过、待过、听过，三样至少占一样。</strong>所以光不是"氛围光"，是过曝的午后、荧光灯的绿白、电视屏幕的蓝、CRT 扫描线、VHS 噪点；空间不是"关卡场景"，是空无一人的商场中庭、停摆的旋转木马、傍晚的小学操场、旧招待所走廊、网吧里一排关着的显示器；物件不是"道具"，是翻盖手机、复读机、随身听、CD 盒、贴纸、千千静听的频谱。</p>
+
+  <p><strong>规矩三：反面清单——燃、爽、压迫感、恐怖猎奇、精英感，出现即跑偏。</strong>以及所有系统术语都不许出现在玩家眼前：增益、模块、被动、参数，这些词只存在于策划案里。</p>
+
+  <p>基调还要管到最具体的取舍上，不然它只是气氛描述。比如：<strong>判定线用电视机的蓝；命中反馈是过曝的光，不是锐利的爆发。</strong>"基调怎么落到像素上"这类决定，就是我在这一层做的事。</p>
+
+  <p><strong>外部参照要榨出规则，不是拿来当装饰。</strong>每引入一部作品，都要求它产出一条可执行的规则：从《看不见的城市》拿到"每一站只用一个念头定义"；从《奇诺之旅》拿到"玩家不干预别人的生活"；从《银河铁道之夜》拿到"旅伴只同行一段"；从《小王子》拿到"器材的来历＝有人为它花过时间"；从《社戏》拿到"册子只写最好的那一个瞬间"。</p>
+
+  <p><strong>执行与交付。</strong>方向先用 AI 铺开多个候选，选定后落成规格（色板、用色规则、占比——更早定过一套量化色板，那是执行层的约束，不是主线）。流程上有一条硬规矩：<strong>任何视觉改动，先在工具里出效果图给我过稿，通过之后才进代码</strong>；"程序化生成的图形换个颜色"不算做完。交付上，导出的 PNG 和游戏里绘制的图形共用同一份几何定义（40 件 UI 资产：按钮四态、卡片四态、图标、路线图符号），改了一处，另一处不会悄悄落后。</p>
+
+  <figure><img src="../assets/fallenangel-ui.png" width="2800" height="1492" alt="40 件 UI 资产共用同一份几何定义" loading="lazy"><figcaption>40 件 UI 资产来自同一份几何定义：按钮与卡片的四种状态、图标、路线图符号。</figcaption></figure>
+
+  <p>这一节的完整过程我单独做了一页：从建仓、GPT Image 十件探针、接本地 Comfy、换 LoRA、换手绘介质、扫 denoise、扣透明底，到第一章定稿留下的稿——<strong>11 个阶段、约 70 张图</strong>，全部用当时真实的中间稿，包括走不通的那几版。</p>
+  <p><a class="btn ghost" href="../art/">看美术制作过程记录（11 个阶段 · 70 张图）→</a></p>
+</section>
+
+<section id="music" class="wrap">
+  <h2><span class="num">⑤</span>音乐管线：我是吉他手，所以把这件事也做成了工具</h2>
+  <p class="secsub">音游要有人打谱，打谱的人得先听懂这首歌。这套管线就是为此做的。</p>
+
+  <p>一条流程把一首歌拆开：<strong>分轨 → 曲式 → 逐小节和弦（含小节内换和弦的拍位）→ 鼓型三层谱（击打时刻 / 力度重音 / 推测音色）→ 贝斯走向</strong>。产出可以直接拖进 FL Studio 用：和弦走向的 MIDI、以及一份逐小节逐格的鼓点击打时刻表。</p>
+
+  <p>每份分析都附可靠度表，明确标出哪些是量出来的、哪些是推测：速度与小节网格是高，和弦走向中高，鼓点音色分类中高，旋律和吉他细节是低——我明确不做逐音符承诺。把不确定的部分写清楚，比假装全都准有用。</p>
+
+  <div class="stats">
+    <div class="stat"><b>340</b><span>谱面与配置的自动校验项（21 组套件）</span></div>
+    <div class="stat"><b>176</b><span>FallenAngel 的提交次数（2026-08 至今），另有 705 行开发记录</span></div>
+    <div class="stat"><b>11</b><span>Game Forge 的自动化测试，其中两条是为真实缺陷补的回归</span></div>
+    <div class="stat"><b>730</b><span>谱面与 MusicXML 往返零差异校验的音符数</span></div>
+  </div>
+</section>
+
+<section id="how" class="wrap">
+  <h2>最后说一句我的做法</h2>
+  <p>这些项目里最有价值的东西，往往不是"做"出来的，是"决定要做什么"决定出来的。谱面编辑器就是这样来的：自动转谱效果不行，我判断得回到人工打谱，可人工打谱太苦——于是工具出现了。后来我发现这不是偶然：为了自己刷题写的程序长成了通用学习工具，用 AI 做游戏长出了 Game Forge。</p>
+  <div class="quotebox">
+    有价值的东西常常是副产物——但前提是那件事里真的有测试、有取舍。这个时代给我们的工具比两年前好太多，对我们这代人来说，难的不是有没有工具，而是多久能把工具变成真正的产出。
+  </div>
+</section>
+
+<section id="contact" class="wrap">
+  <h2>联系</h2>
+  <p>想看哪一部分都可以让我现场演示：行程循环、配置表怎么改、谱面编辑器怎么用、或者我停掉和搁置过的那些决定。</p>
+  <p><a href="mailto:3217106524@qq.com">3217106524@qq.com</a> · 17866967160 · <a href="https://github.com/lixiang021011-sketch">github.com/lixiang021011-sketch</a></p>
+  <p class="secsub" style="margin-top:6px;">海外联系：lixiang021011@gmail.com · +31 6 17135117</p>
+</section>
+
+<footer class="wrap">
+  这一页是摘要。完整作品手册——五章、二十张图，从配置层往上讲系统——是一份 <a href="../assets/xiang-li-project-manual.pdf">30 页的 PDF</a>。
+  另外，④美术那一节的制作过程单独做了一页：<a href="../art/">11 个阶段、约 70 张过程图</a>。
+</footer>
+
+<div id="lb" aria-hidden="true">
+  <a class="open" href="#" target="_blank" rel="noopener">打开原图 ↗</a>
+  <button class="close" aria-label="关闭">&times;</button>
+  <img alt="">
+  <div class="cap"></div>
+</div>
+
+<script>
+(function () {
+  var lb = document.getElementById("lb");
+  var lbImg = lb.querySelector("img");
+  var cap = lb.querySelector(".cap");
+  var openLink = lb.querySelector(".open");
+  function open(src, text) {
+    lbImg.src = src; openLink.href = src; cap.textContent = text || "";
+    lb.classList.add("on"); lb.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+  function close() {
+    lb.classList.remove("on"); lb.setAttribute("aria-hidden", "true");
+    lbImg.removeAttribute("src"); document.body.style.overflow = "";
+  }
+  document.querySelectorAll("figure").forEach(function (fig) {
+    var img = fig.querySelector("img"); if (!img) return;
+    var c = fig.querySelector("figcaption");
+    img.addEventListener("click", function (e) { e.preventDefault(); open(img.getAttribute("src"), c ? c.textContent : ""); });
+  });
+  lb.addEventListener("click", function (e) { if (e.target === lb || e.target.classList.contains("close")) close(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && lb.classList.contains("on")) close(); });
+})();
+</script>
+
+<script>
+/* 语言切换停在原处：把当前区块写进 URL 锚点，并在多个时机校正滚动（图片懒加载会改变布局） */
+(function () {
+  function currentAnchor() {
+    var secs = document.querySelectorAll("section[id]");
+    var y = window.scrollY + 90, best = "";
+    for (var i = 0; i < secs.length; i++) { if (secs[i].offsetTop <= y) best = secs[i].id; }
+    return best || "top";
+  }
+
+  var link = document.getElementById("langSwitch");
+  if (link) {
+    var base = (link.getAttribute("href") || "").split("#")[0];
+    link.addEventListener("click", function () {
+      var id = currentAnchor();
+      link.setAttribute("href", id === "top" ? base : base + "#" + id);
+    });
+  }
+
+  if ("scrollRestoration" in history) { try { history.scrollRestoration = "manual"; } catch (e) {} }
+
+  function jump() {
+    var id = (location.hash || "").replace("#", "");
+    if (!id || id === "top") return;
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ block: "start" });
+  }
+
+  jump();
+  window.addEventListener("load", jump);
+  window.addEventListener("pageshow", jump);
+  setTimeout(jump, 400);
+})();
+</script>
+
+</body>
+</html>

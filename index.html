@@ -3,82 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Xiang Li — Game systems, tools and verification</title>
-<meta name="description" content="Game designer working on systems, numbers and the tooling around them. FallenAngel, Game Forge, Bell Garden, StylesVN.">
+<title>Xiang Li — gameplay design, systems and the tools around them</title>
+<meta name="description" content="Game designer working on systems and the tooling around them. FallenAngel, Bell Garden, Game Forge, StylesVN.">
 <style>
   :root{
     --ink:#14171c; --muted:#5d6875; --line:#e3e7ee; --accent:#2f6fed; --soft:#f6f8fb;
-    --serif:Georgia,"Times New Roman","Songti SC",serif;
-    --sans:-apple-system,"Segoe UI","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+    --sans:-apple-system,"Segoe UI","Microsoft YaHei","PingFang SC",Roboto,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{margin:0;background:#fff;color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:16.5px;-webkit-font-smoothing:antialiased;}
+  body{margin:0;background:#fff;color:var(--ink);font-family:var(--sans);line-height:1.75;font-size:16.5px;-webkit-font-smoothing:antialiased;}
   a{color:var(--accent);text-decoration:none;}
   a:hover{text-decoration:underline;}
-  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
-
-  nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;}
-  nav .name{font-weight:650;letter-spacing:-.01em;}
-  nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;font-size:14.5px;}
+  nav .name{font-weight:700;}
+  nav ul{display:flex;flex-wrap:wrap;gap:16px;list-style:none;margin:0;padding:0;font-size:14.5px;}
   nav a{color:var(--muted);}
   nav a:hover{color:var(--accent);}
-
-  header{padding:72px 0 40px;}
-  h1{font-family:var(--serif);font-size:44px;line-height:1.12;margin:0 0 14px;letter-spacing:-.5px;}
-  .lede{font-size:19px;color:#31363d;max-width:44em;}
-  .avail{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px;}
+  header{padding:64px 0 32px;}
+  h1{font-size:36px;line-height:1.32;margin:0 0 16px;letter-spacing:-.5px;}
+  .lede{font-size:18px;color:#31363d;max-width:42em;}
+  .avail{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;}
   .pill{font-size:13.5px;border:1px solid var(--line);background:var(--soft);border-radius:99px;padding:3px 12px;color:var(--muted);}
   .pill.accent{border-color:#c7dbff;background:#eef4ff;color:#1d4ed8;}
-  .cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px;}
+  .cta{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;}
   .btn{display:inline-block;border:1.5px solid var(--accent);color:#fff;background:var(--accent);border-radius:9px;padding:10px 18px;font-size:15px;font-weight:600;}
   .btn.ghost{background:#fff;color:var(--accent);}
   .btn:hover{text-decoration:none;filter:brightness(1.05);}
-
-  section{padding:44px 0;border-top:1px solid var(--line);}
-  h2{font-family:var(--serif);font-size:28px;margin:0 0 6px;letter-spacing:-.3px;}
-  .secsub{color:var(--muted);margin:0 0 28px;font-size:16px;}
-  h3{font-size:21px;margin:0 0 4px;}
-  .hook{font-weight:600;color:#1f242b;margin:0 0 12px;}
-  .project{margin-bottom:52px;}
-  .project:last-child{margin-bottom:0;}
-  .meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 16px;}
-  ul.tight{margin:0 0 18px;padding-left:20px;}
-  ul.tight li{margin:5px 0;}
+  section{padding:40px 0;border-top:1px solid var(--line);scroll-margin-top:72px;}
+  h2,h3{scroll-margin-top:72px;}
+  h2{font-size:25px;margin:0 0 8px;letter-spacing:-.3px;}
+  h2 .num{color:var(--accent);margin-right:8px;font-weight:700;}
+  .secsub{color:var(--muted);margin:0 0 22px;font-size:16px;}
+  h3{font-size:18px;margin:26px 0 6px;}
+  p{margin:0 0 14px;}
+  ul.tight{margin:0 0 16px;padding-left:20px;}
+  ul.tight li{margin:6px 0;}
   figure{margin:18px 0;}
-  figure img{width:100%;display:block;border:1px solid var(--line);border-radius:12px;background:#fff;}
+  figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:zoom-in;}
   figcaption{color:var(--muted);font-size:14px;margin-top:8px;}
-  figure img{cursor:zoom-in;}
-  .zoomhint{color:var(--muted);font-size:13.5px;margin:6px 0 0;}
-  #lb{position:fixed;inset:0;background:rgba(10,12,16,.93);display:none;align-items:center;justify-content:center;z-index:60;padding:24px;}
-  #lb.on{display:flex;}
-  #lb img{max-width:96vw;max-height:86vh;width:auto;height:auto;border-radius:8px;box-shadow:0 12px 48px rgba(0,0,0,.55);background:#fff;}
-  #lb .cap{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#c9d2de;font-size:14px;padding:0 28px;line-height:1.45;}
-  #lb .open{position:absolute;top:16px;left:20px;color:#c9d2de;font-size:13.5px;}
-  #lb .close{position:absolute;top:8px;right:14px;color:#fff;font-size:30px;line-height:1;background:none;border:none;cursor:pointer;}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff;}
-  .card .t{font-weight:650;margin-bottom:4px;}
+  .card .t{font-weight:700;margin-bottom:4px;}
   .card .d{font-size:14.5px;color:var(--muted);}
   .quotebox{border-left:4px solid var(--accent);background:#f6f9ff;border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0;}
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px;}
   .stat{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--soft);}
   .stat b{display:block;font-size:22px;letter-spacing:-.5px;}
   .stat span{font-size:13.5px;color:var(--muted);}
-  .thesis{font-family:var(--serif);font-size:22px;line-height:1.5;color:#1f242b;
-          border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-          padding:24px 0;margin:34px 0 0;letter-spacing:-.2px;}
-  .thesis span{display:block;font-family:var(--sans);font-size:14px;color:var(--muted);margin-top:12px;letter-spacing:0;}
-  footer{padding:40px 0 80px;color:var(--muted);font-size:14.5px;border-top:1px solid var(--line);}
-  .contact a{font-weight:600;}
+  table.idx{width:100%;border-collapse:collapse;font-size:15px;margin:6px 0 4px;}
+  table.idx th,table.idx td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top;}
+  table.idx th{color:var(--muted);font-weight:600;font-size:13.5px;}
+  #lb{position:fixed;inset:0;background:rgba(10,12,16,.93);display:none;align-items:center;justify-content:center;z-index:60;padding:24px;}
+  #lb.on{display:flex;}
+  #lb img{max-width:96vw;max-height:86vh;width:auto;height:auto;border-radius:8px;box-shadow:0 12px 48px rgba(0,0,0,.55);background:#fff;}
+  #lb .cap{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#c9d2de;font-size:14px;padding:0 28px;}
+  #lb .open{position:absolute;top:16px;left:20px;color:#c9d2de;font-size:13.5px;}
+  #lb .close{position:absolute;top:8px;right:14px;color:#fff;font-size:30px;line-height:1;background:none;border:none;cursor:pointer;}
+  footer{padding:36px 0 72px;color:var(--muted);font-size:14.5px;border-top:1px solid var(--line);}
   @media (max-width:760px){
-    h1{font-size:32px;} h2{font-size:23px;}
+    h1{font-size:27px;} h2{font-size:21px;}
     .two,.three,.stats{grid-template-columns:1fr;}
-    header{padding:44px 0 26px;}
-    nav ul{gap:12px;font-size:13.5px;}
-    body{font-size:16px;}
+    header{padding:40px 0 24px;}
+    nav .wrap{height:auto;min-height:56px;padding:8px 0;align-items:flex-start;}
+    nav ul{gap:10px 14px;font-size:13px;row-gap:6px;}
+    body{font-size:16px;line-height:1.8;}
+    table.idx{font-size:14px;}
   }
 </style>
 </head>
@@ -88,169 +81,176 @@
   <div class="wrap">
     <span class="name">Xiang Li</span>
     <ul>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#how">How I work</a></li>
+      <li><a href="#design">Design</a></li>
+      <li><a href="#impl">Implementation</a></li>
+      <li><a href="#system">Systems</a></li>
+      <li><a href="#art">Art</a></li>
+      <li><a href="#music">Music</a></li>
       <li><a href="assets/xiang-li-project-manual.pdf">Manual (PDF)</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a id="langSwitch" href="./zh/">中文</a></li>
     </ul>
   </div>
 </nav>
 
 <header class="wrap">
-  <h1>Game systems, tools and verification.</h1>
+  <h1>I design gameplay and systems — and the tools that hold them up.</h1>
   <p class="lede">
-    I am a game designer working on <strong>systems and the tools around them</strong>: the rules, the numbers,
-    and the tools other people author content with. I design them, direct the implementation, and verify the result on device.
+    Concretely: I work the gameplay out, turn systems into design docs and config tables, turn repeated work into tools,
+    and then verify the result on device myself. Implementation is written by AI against my spec — the spec, the boundaries
+    and the acceptance criteria are mine.
   </p>
   <div class="avail">
-    <span class="pill accent">Available for a 6-month internship from February 2027</span>
-    <span class="pill">Amsterdam</span>
-    <span class="pill">32 hours / week</span>
-    <span class="pill">MSc Business Administration (International Business), University of Amsterdam</span>
+    <span class="pill accent">Class of 2027 ｜ Target roles: game designer (systems) · game project management</span>
+    <span class="pill">Any city (Shanghai / Beijing / Shenzhen / Hangzhou / Guangzhou / Chengdu)</span>
+    <span class="pill">MSc Business Administration, University of Amsterdam (graduating Aug 2027)</span>
+    <span class="pill">English (TEM-8) · German B2 · Japanese N2</span>
   </div>
   <div class="cta">
     <a class="btn" href="assets/xiang-li-project-manual.pdf">Download the project manual (30 pages)</a>
-    <a class="btn ghost" href="mailto:lixiang021011@gmail.com">Email me</a>
+    <a class="btn ghost" href="mailto:3217106524@qq.com">Email me</a>
   </div>
 </header>
 
-<section id="work" class="wrap">
-  <h2>Selected work</h2>
-  <p class="secsub">Four projects, each with the problem it answers, what exists today, and how it is checked. <strong>Click any figure to enlarge it</strong> — the diagrams are drawn at full resolution and the small labels only become readable at that size.</p>
+<section class="wrap">
+  <p class="secsub">Five layers below: <strong>gameplay design → implementation → systems → art → music</strong>. Each one says what I did, how far it got, and how it was checked. Every figure opens full size.</p>
+  <table class="idx">
+    <tr><th style="width:23%">Project</th><th style="width:34%">What it is</th><th>What I own</th></tr>
+    <tr><td><strong>FallenAngel</strong></td><td>Unity rhythm game: songs live inside a run instead of being collected once</td><td>Gameplay and system design, config tables, the chart editor, verification</td></tr>
+    <tr><td><strong>Bell Garden</strong></td><td>Metroidvania vertical slice (Windows + Android)</td><td>Gameplay and gating rules, art direction decisions, directing and accepting a full rewrite</td></tr>
+    <tr><td><strong>Game Forge</strong></td><td>A local dashboard for running several projects at once</td><td>Requirements and rule design, the state model, verification</td></tr>
+    <tr><td><strong>StylesVN</strong></td><td>A full-length visual novel (non-commercial fan work)</td><td>Narrative pipeline design: the script is the data</td></tr>
+  </table>
+</section>
 
-  <!-- FallenAngel -->
-  <div class="project">
-    <h3>FallenAngel — a rhythm game where songs are encounters, not trophies</h3>
-    <p class="hook">Rhythm games consume their own music: once you have FC'd or AP'd a song, you rarely come back to it. FallenAngel puts songs inside a run-based journey, so a song becomes a challenge you meet again instead of a trophy you retire.</p>
-    <div class="meta">
-      <span class="pill">Unity 2022.3 / C#</span><span class="pill">Android + PC</span>
-      <span class="pill">Design, systems, tooling, verification</span><span class="pill">75 commits · tag v0.3.0</span>
-    </div>
-    <ul class="tight">
-      <li><strong>The problem:</strong> players "collect" a song (收曲) — full combo or all perfect — and move on. The content is consumed by the act of mastering it, and the only reason to keep playing is to get better.</li>
-      <li><strong>The answer:</strong> a run is a journey through a short map where songs return as present challenges, never permanent ones. Difficulty rises with depth and the player's <em>build</em> is what offsets it — instead of a fixed chart the player grows into.</li>
-      <li><strong>One song, many charts:</strong> you perform the instrument's own track — the bass, the riff, the chords — so you hear parts that normally disappear under the melody, and you cover one seat rather than the whole song.</li>
-      <li><strong>Honest status:</strong> the run structure and the out-of-run build framework are demoable; the playing core is being polished; the in-run build layer is scoped but not yet designed in detail.</li>
-    </ul>
-    <figure><img src="assets/fallenangel-editor.png" alt="The in-engine chart editor with a real chart loaded" loading="lazy"><figcaption>The chart editor itself, running inside Unity with one of the internal test charts loaded (<code>mecha_tribe.json</code>, BPM 180, 105 s of audio). Note types, snap division, offset nudging, the waveform and the live validity checks all live in this one window. The interface is in Chinese — it is a tool built for myself.</figcaption></figure>
-    <div class="two">
-      <figure><img src="assets/fallenangel-loop.png" alt="Two loops: a run feeds the permanent layer and changes the next run" loading="lazy"><figcaption>The two layers: a run, and the permanent progression it settles into.</figcaption></figure>
-      <figure><img src="assets/fallenangel-route.png" alt="The route map: nine nodes with one paid fork" loading="lazy"><figcaption>The route as configured: nine nodes, one paid fork at fare 40. Icons are the shipped UI assets.</figcaption></figure>
-    </div>
-    <div class="two">
-      <figure><img src="assets/fallenangel-talent.png" alt="The 24-node talent tree with three free junctions" loading="lazy"><figcaption>24 talent nodes — 21 purchasable, 3 free junctions that let a build change lanes.</figcaption></figure>
-      <figure><img src="assets/fallenangel-settlement.png" alt="Settlement pipeline with interest kept outside the amplifier" loading="lazy"><figcaption>Settlement: base → amplification → floor → cap, with interest deliberately outside those steps.</figcaption></figure>
-    </div>
-    <div class="quotebox">
-      <strong>What came out of it.</strong> The editor exists because charts had to be authored by hand — but looking back, it may be
-      worth more than the game it was built for. That turned out to be a pattern rather than a one-off: a quiz program made for my own
-      exam became a general-purpose study engine, and using AI to build games led to Game Forge. Valuable things tend to appear as
-      by-products of the work — but only when the work involves real testing and real trade-offs.
-    </div>
-    <figure><img src="assets/fallenangel-verification.png" alt="What is checked: 95 batch-mode checks, 27 geometry checks, transactional saves, the simulation" loading="lazy"><figcaption>Automation verifies state; people verify feel — the two are kept apart on purpose.</figcaption></figure>
-    <p class="linkline"><a href="https://github.com/lixiang021011-sketch/FallenAngel">Repository on GitHub</a></p>
+<section id="design" class="wrap">
+  <h2><span class="num">①</span>Gameplay design: start with "why would a player come back"</h2>
+  <p class="secsub">I don't start from "what should we add". I start from the problem the genre has not solved.</p>
+
+  <h3>The problem in rhythm games: they eat their own content</h3>
+  <p>Once you have full-comboed or all-perfected a song, you rarely open it again. The content is consumed by the act of mastering it, and the only thing left is a higher score.</p>
+  <p>So songs go inside a run: the ones you meet on the way come back later at a different difficulty and in a different shape. Difficulty rises with depth, and what offsets it is what the player has built up along the way. A song stops being a trophy and becomes an opponent you meet again.</p>
+
+  <h3>One song, many charts</h3>
+  <p>A song is split into the parts it actually has — bass, riff, chords. You perform the one instrument you picked, so you hear the parts that normally disappear under the melody. You cover one seat rather than the whole song.</p>
+
+  <h3>Chapter 1's register: swap the gravity of bills for the gravity of people</h3>
+  <p>The first chapter is built on one line: <strong>walk the road the kid who never got to walk it would have walked.</strong> In mechanics that becomes a swap — take out everything that presses down on a person in real life and replace it with things that carry the same weight but can become a game:</p>
+  <ul class="tight">
+    <li>Remove: rent, deadlines, being unable to afford the fare, social standing.</li>
+    <li>Replace with: promises, time, distance, partings, things never said out loud, people you may not see again.</li>
+  </ul>
+  <p>That is where the through-line comes from: <strong>you promised someone you would find them once you could finish that piece — and you only know the first half.</strong> Progress then has a concrete shape: how far you can play depends on how far you have travelled, and the further you go the less the places look like anywhere you know. Because there is a promise, failing is not death — it is a leg you did not finish.</p>
+
+  <h3>An encounter is a chart; a companion only travels one layer</h3>
+  <p>What the player meets is not "a song" but <b>one song × one instrument</b>, and that combination is a level. You pick a musician identity at the start and it decides which charts you play all run; the same song appearing twice with different instruments is normal — so "one song, many charts" is not a selling point here, it is what makes the whole structure work.</p>
+  <p>Companions are the same idea in one rule: you meet someone on the road, they travel one layer with you, and when you go deeper they are gone. They might leave something behind, or nothing at all. The mechanism and the feeling are the same thing — <strong>"we travelled a stretch together" is both a rule and what the chapter is about.</strong></p>
+
+  <h3>Bell Garden: abilities unlock classes of space</h3>
+  <p>Dash crosses gaps you cannot jump, the double jump reaches a layer you could not touch, the hook latches onto points that were out of range. Each ability opens a whole class of space, so progress is read from the map itself instead of a pop-up telling you that you got stronger.</p>
+
+  <div class="two">
+    <figure><img src="assets/fallenangel-difficulty.png" width="2800" height="1044" alt="Where the difficulty comes from" loading="lazy"><figcaption>Where the difficulty comes from: both games have progression — the difference is who is expected to change.</figcaption></figure>
+    <figure><img src="assets/fallenangel-loop.png" width="2800" height="1356" alt="Two loops: a run and the permanent layer it settles into" loading="lazy"><figcaption>Two layers: a run, and the permanent progression it settles into.</figcaption></figure>
   </div>
+  <figure><img src="assets/bellgarden-gating.png" width="2800" height="1042" alt="Bell Garden: abilities as the map's grammar" loading="lazy"><figcaption>Each ability opens a class of space, so progress is read from the map itself.</figcaption></figure>
+</section>
 
-  <!-- Game Forge -->
-  <div class="project">
-    <h3>Game Forge — the dashboard I designed to run my own projects</h3>
-    <p class="hook">A local tool that scans the machine for game projects, launches any of them, and turns each project's README, tasks and Git state into the next three actionable steps.</p>
-    <p>It came out of a change in how the work itself happens. With AI writing most of the implementation, my job moved: I no longer check progress by reviewing every piece — I check it by running the thing, testing it, and accepting or rejecting it. The tax is everything around that: opening a project just to find out what state it is in, asking an assistant about a project it has no memory of, and switching between six of them. Game Forge answers two questions without opening anything — what state each project is in, and what the next thing to do in it is. It does not manage editor installs or licences (that is Unity Hub's job, and the Hub is better at it), it shows state rather than appearance, and it is not a team tool.</p>
-    <div class="meta">
-      <span class="pill">Node.js, zero dependencies</span><span class="pill">11 automated tests</span>
-      <span class="pill">Local only — never uploads</span>
-    </div>
-    <ul class="tight">
-      <li>Detects projects by real markers and explicitly distrusts vendor files — a fix that came out of a real failure (a leftover bundle directory registered as a project), now covered by a regression test.</li>
-      <li>Deliberately small side effects: one file written per action, no project code touched, no commits made on my behalf.</li>
-      <li>"Advance" turns a project's README, TODOs and Git state into three next steps — with a written evidence file showing how the same project produces different suggestions when its state changes.</li>
-    </ul>
-    <div class="two">
-      <figure><img src="assets/gameforge-dashboard.jpg" alt="Game Forge dashboard in demo mode" loading="lazy"><figcaption>The dashboard in demo mode: project state and Git state in one view.</figcaption></figure>
-      <figure><img src="assets/gameforge-advance.jpg" alt="Advance generating three next steps for a project with no Git" loading="lazy"><figcaption>Advance on a project with no Git: three next steps and the prompt behind them.</figcaption></figure>
-    </div>
+<section id="impl" class="wrap">
+  <h2><span class="num">②</span>Implementation: I can read implementation, and I can direct it</h2>
+  <p class="secsub">I don't write the code. Whether it lands correctly, or quietly drifts, is mine to judge.</p>
+
+  <p>The rules I give the AI are written down, not re-stated each time: which files may change (scripts only), which must be edited by hand in the editor (scenes, prefabs), which are off limits (no new packages, no changes to project settings). Every change has to pass two checks — a headless compile check before commit, and automatic validation over charts and configuration.</p>
+  <p>That chart-and-config validation is currently <strong>340 checks across 21 suites</strong>, all green. Automated checks can only prove the system is not broken; whether it is fun has to be played. So every version gets run on device.</p>
+
+  <h3>One debugging example</h3>
+  <p>When long notes started rendering wrong, my first explanation was that a length cap was cutting them off. Testing killed that explanation: the real cause was render order and gradient distribution. I compared the upstream open-source implementation line by line and adopted its approach (no length clamp, a separate mesh, explicit layering). When my judgement is wrong, the judgement changes — that habit matters more than the answer.</p>
+
+  <p>In Bell Garden I went one step further: I let the AI play the whole slice from the start to the three-phase boss. Every time combat feel or a level changes, the first question is whether the game can still be finished at all — a much stronger signal than "no errors in the console".</p>
+
+  <div class="two">
+    <figure><img src="assets/fallenangel-verification.png" width="2800" height="1030" alt="What the automated checks cover" loading="lazy"><figcaption>Automation verifies state; people verify feel — the two are kept apart on purpose.</figcaption></figure>
+    <figure><img src="assets/bellgarden-boss.jpg" width="1280" height="720" alt="Bell Garden's three-phase boss" loading="lazy"><figcaption>The three-phase boss: the AI walks the slice up to it, confirming the game is still completable after changes.</figcaption></figure>
   </div>
+</section>
 
-  <!-- Bell Garden -->
-  <div class="project">
-    <h3>Bell Garden — a metroidvania vertical slice</h3>
-    <p class="hook">Nine areas, three abilities and a three-phase boss, in a slice that plays itself to completion as a regression check.</p>
-    <div class="meta">
-      <span class="pill">Unity</span><span class="pill">Windows + Android</span><span class="pill">In progress</span>
-    </div>
-    <ul class="tight">
-      <li>Abilities gate classes of space rather than single doors, so the map communicates progress by itself.</li>
-      <li>Every enemy type telegraphs and punishes, so fights are about timing rather than a bigger number.</li>
-      <li>I audited the first version against open-source examples of the genre and then <strong>directed a full rewrite</strong> of the systems and the art, rather than patching a structure I no longer trusted.</li>
-    </ul>
-    <div class="two">
-      <figure><img src="assets/bellgarden-title.jpg" alt="Bell Garden title screen" loading="lazy"><figcaption>Vertical slice: 9 areas, 15 rooms, 3 abilities.</figcaption></figure>
-      <figure><img src="assets/bellgarden-map.jpg" alt="Bell Garden map view" loading="lazy"><figcaption>The map is a first-class feature, not a debug overlay — a 15-room map has to stay legible.</figcaption></figure>
-    </div>
-  </div>
+<section id="system" class="wrap">
+  <h2><span class="num">③</span>Systems: design docs, config tables, and structures that survive changes</h2>
+  <p class="secsub">A system always ends up as two artefacts: a document another person can read, and a table that can be changed again tomorrow.</p>
 
-  <!-- StylesVN -->
-  <div class="project">
-    <h3>StylesVN — a narrative pipeline where the script is data</h3>
-    <p class="hook">A full-length visual novel project built around one question: can a script drive everything? Nine chapters, 495 staged instructions, 437 lines of dialogue, ~22,600 characters.</p>
-    <div class="meta">
-      <span class="pill">Unity 2022.3 LTS</span><span class="pill">Windows + Android</span>
-      <span class="pill">In progress</span><span class="pill">Non-commercial fan work</span>
-    </div>
-    <ul class="tight">
-      <li>Every beat is data — background, speaker, portrait, sound, transition — so adding a scene never touches the engine.</li>
-      <li>One command compiles, validates the content and then plays the entire story to its ending: a two-second feedback loop instead of a two-minute one.</li>
-      <li>Licensing is split explicitly: MIT code, all-rights-reserved assets with a fan-work clause, itemised third-party notices.</li>
-    </ul>
-    <div class="two">
-      <figure><img src="assets/stylesvn-content.png" alt="StylesVN content pipeline and instruction schema" loading="lazy"><figcaption>The content pipeline and the instruction schema every chapter shares.</figcaption></figure>
-      <figure><img src="assets/stylesvn-library.jpg" alt="A scene background from StylesVN" loading="lazy"><figcaption>Thirteen scene backgrounds and thirteen character portraits drive the staging.</figcaption></figure>
-    </div>
+  <h3>Equipment and gem systems (SAGI Games)</h3>
+  <p>I owned this system end to end: system design and the UE documentation, the config tables, handing it to art and engineering, then following the implementation through to acceptance. I also handled item configuration, map configuration and map editing.</p>
+
+  <h3>Table-driven structure (FallenAngel)</h3>
+  <p>I write systems as structure rather than as code: in the current build, both the route and the progression are table-driven — changing structure does not mean changing code, it means editing a table. That is what makes it possible for one person to carry a project from design to implementation to acceptance.</p>
+  <p>Chapter 1's redesign is settled (2026-09-23): <strong>3 layers, 7 performances, 16 nodes</strong>, in six node types (performance, hard fight, shop, event, rest, final room). Writing the design down before touching anything is the order I work in.</p>
+
+  <h3>StylesVN: the script is the data</h3>
+  <p>Every beat of the story — background, speaker, portrait, sound, transition — is data, so adding a scene never touches the engine. One command then compiles the script, validates the content, and plays the entire story through to its ending: a two-second feedback loop instead of a two-minute one. Nine chapters, 495 staged instructions, 437 lines of dialogue.</p>
+
+  <h3>Game Forge: turning "what state is this in" into a tool</h3>
+  <p>When AI writes most of the implementation, my job moves: I stop checking progress by reading everything and start checking it by running the thing. The tax is everything around that — opening a project just to learn its state, asking an assistant about a project it has no memory of, switching between six of them. Game Forge answers two questions without opening anything: what state each project is in, and what the next three things to do are.</p>
+
+  <p class="secsub" style="margin-top:6px;">Note: the in-run item and economy systems are being rebuilt from the ground up, so this section only covers what is already stable — details come back once the new version lands.</p>
+
+  <figure><img src="assets/fallenangel-route.png" width="2800" height="818" alt="The route: nine nodes with one fork" loading="lazy"><figcaption>The route: nine nodes, one of them a fork. Icons are the shipped in-game assets.</figcaption></figure>
+</section>
+
+<section id="art" class="wrap">
+  <h2><span class="num">④</span>Art: fix the register as rules before anyone draws</h2>
+  <p class="secsub">Chapter 1's register is "millennium dreamcore" — the childhood imagery of 2000s China. Setting a register is not writing adjectives; it is writing rules that can be enforced. Design settled 2026-09-23; implementation has not started.</p>
+
+  <p><strong>Rule one: only take light, emptiness and repetition — no uncanny, no surveillance, no horror.</strong> Dreamcore has two directions: the gentle kind of empty and the uncanny kind. The second is allowed only a little, deep in the part where the world stops looking like anywhere real, and it is there to produce wonder, never fear.</p>
+
+  <p><strong>Rule two: every element has to pass one filter — touched, stood in, or heard, at least one of the three.</strong> So light is not "ambient lighting", it is an overexposed afternoon, the green-white of a fluorescent tube, the blue of a TV screen, CRT scanlines, VHS noise. Space is not "a level", it is an empty mall atrium, a stopped carousel, a primary-school playground at dusk, a corridor in an old guesthouse, a row of dark monitors in an internet café. Objects are not "items", they are a flip phone, a repeater, a Walkman, a CD case, stickers, the spectrum display of a 2000s Chinese music player.</p>
+
+  <p><strong>Rule three: the anti-list.</strong> Hype, power fantasy, pressure, horror for its own sake, elitism — any of these and the register is broken. And no systems vocabulary ever reaches the player: buffs, modules, passives, parameters live in the design doc, not on screen.</p>
+
+  <p>The register also has to reach the individual decisions, otherwise it is just atmosphere. For example: <strong>the judgement line uses the blue of a television; a hit is overexposed light rather than a sharp burst.</strong> Deciding how a register lands at the pixel level is the work in this layer.</p>
+
+  <p><strong>External references have to yield rules, not decoration.</strong> Every work I bring in has to produce something executable: from <i>Invisible Cities</i>, "each stop is defined by one thought"; from <i>Kino's Journey</i>, "the player never intervenes in anyone's life"; from <i>Night on the Galactic Railroad</i>, "companions only travel one stretch"; from <i>The Little Prince</i>, "an object matters because someone spent time on it"; from <i>My Old Home</i>-era Chinese prose, "the notebook only keeps the best single moment".</p>
+
+  <p><strong>Execution and delivery.</strong> Directions are first opened up with AI, then written down as a specification (palette, usage rules, share limits — an earlier quantified palette exists as an execution-layer constraint, not as the direction itself). One hard rule on process: <strong>any visual change is first output as a mock-up for me to approve, and only then enters the code</strong>; recolouring a procedurally generated shape does not count as done. On delivery, exported PNGs and in-game drawing share one geometry definition — currently 40 UI assets (buttons in four states, cards in four states, icons, route symbols), so changing one cannot silently leave the other behind.</p>
+
+  <figure><img src="assets/fallenangel-ui.png" width="2800" height="1492" alt="40 UI assets from one geometry definition" loading="lazy"><figcaption>40 UI assets from one geometry definition: buttons and cards in four states, icons, route symbols.</figcaption></figure>
+
+  <p>The full production log for this layer is a separate page: from setting up the workshop, ten probe images, moving to local ComfyUI, swapping LoRAs, changing medium, sweeping denoise, to the artwork chapter 1 kept — <strong>11 stages, about 70 intermediate images</strong>, including the versions that did not work.</p>
+  <p><a class="btn ghost" href="art/">Art production log（11 stages · 70 images，中文）→</a></p>
+</section>
+
+<section id="music" class="wrap">
+  <h2><span class="num">⑤</span>Music pipeline: I'm a guitarist, so I built this too</h2>
+  <p class="secsub">A rhythm game needs charts, and whoever writes a chart has to actually hear the song. This pipeline exists for that.</p>
+
+  <p>One flow takes a song apart: <strong>stem separation → song form → chord per bar (with the beat where a chord changes) → drum pattern in three layers (hit time, accent, guessed timbre) → bass movement</strong>. The output drops straight into FL Studio: a MIDI track for the chord progression and a bar-by-bar drum hit sheet.</p>
+
+  <p>Every analysis ships with a reliability table that says what was measured and what was guessed: tempo and bar grid high, chord progression medium-high, drum timbre classification medium-high, melodic detail low — no per-note promises. Writing down the uncertain part is more useful than pretending everything is accurate.</p>
+
+  <div class="stats">
+    <div class="stat"><b>340</b><span>automated checks on charts and configuration (21 suites)</span></div>
+    <div class="stat"><b>176</b><span>commits on FallenAngel since Aug 2026, plus a 705-line development log</span></div>
+    <div class="stat"><b>11</b><span>automated tests on Game Forge, two of them regressions for real defects</span></div>
+    <div class="stat"><b>730</b><span>notes verified in a zero-difference chart ↔ MusicXML round trip</span></div>
   </div>
 </section>
 
 <section id="how" class="wrap">
-  <h2>How I work</h2>
-  <p class="secsub">Three habits that show up in every project above.</p>
-  <div class="three">
-    <div class="card"><div class="t">Design claims get tested</div><div class="d">If a design says "playing better should pay better", there is a simulation behind that sentence — and its boundary conditions are written down too.</div></div>
-    <div class="card"><div class="t">Production problems become tool problems</div><div class="d">When content costs too much to produce, the answer is a tool rather than more hours. When the tool is not good enough, that answer gets abandoned rather than defended.</div></div>
-    <div class="card"><div class="t">Automation verifies state; people verify feel</div><div class="d">Automated checks confirm that systems behave. Whether something feels right is decided by playing it — the projects keep those two separated on purpose.</div></div>
+  <h2>Where the value actually came from</h2>
+  <p>In these projects the most valuable things were not built on purpose — they were decided. The chart editor exists because automatic chart conversion was not good enough, I judged that charts had to be authored by hand, and authoring by hand was too painful; so the tool appeared. Later I noticed it was a pattern: a quiz program written for my own exams became a general study tool, and using AI to build games produced Game Forge.</p>
+  <div class="quotebox">
+    Valuable things tend to appear as by-products — but only when the work involves real testing and real trade-offs. This era hands us far better production tools than we had two years ago. For people my age the hard part is not having the tools; it is how quickly we turn them into real output.
   </div>
-
-  <div class="quotebox" style="margin-top:26px;">
-    <strong>How I work with AI:</strong> implementation is written with AI assistance under my direction — the design
-    decisions, the scope rules and the on-device verification are mine. Two decisions went the other way from "build more":
-    auto chart conversion was stopped when the output was worse than hand-authoring, and per-note instrument sampling was
-    shelved when the cost exceeded what one person could finish.
-  </div>
-
-  <div class="stats">
-    <div class="stat"><b>95</b><span>batch-mode checks on FallenAngel, plus 27 icon geometry checks</span></div>
-    <div class="stat"><b>11</b><span>automated tests on Game Forge, including two regressions for real defects</span></div>
-    <div class="stat"><b>730</b><span>notes verified in a zero-difference chart ↔ MusicXML round trip</span></div>
-    <div class="stat"><b>2</b><span>design choices inside the chart editor: cross-format import, and a horizontal DAW-style authoring view</span></div>
-  </div>
-
-  <p class="thesis">
-    In these projects the value often isn't in the doing — it's in deciding what should exist. This era hands us far better
-    production tools than we had two years ago. The question for people my age is how quickly we turn those tools into real output.
-    <span>— how I think about the work, and why the tools came first</span>
-  </p>
 </section>
 
-<section id="contact" class="wrap contact">
+<section id="contact" class="wrap">
   <h2>Contact</h2>
-  <p>Happy to demo the run loop, walk through the balance model, or talk about any decision I stopped or shelved.</p>
-  <p>
-    <a href="mailto:lixiang021011@gmail.com">lixiang021011@gmail.com</a> · +31 6 17135117 ·
-    <a href="https://github.com/lixiang021011-sketch">github.com/lixiang021011-sketch</a>
-  </p>
+  <p>I'm happy to demo any of it live: the run loop, editing a config table, the chart editor, or the decisions I stopped and shelved.</p>
+  <p><a href="mailto:3217106524@qq.com">3217106524@qq.com</a> · 17866967160 · <a href="https://github.com/lixiang021011-sketch">github.com/lixiang021011-sketch</a></p>
+  <p class="secsub" style="margin-top:6px;">Also reachable at lixiang021011@gmail.com · +31 6 17135117</p>
 </section>
 
 <footer class="wrap">
-  This page is a summary. The full project manual — five chapters, twenty figures, the systems explained from the configuration up — is available as
-  <a href="assets/xiang-li-project-manual.pdf">a 30-page PDF</a>.
+  This page is a summary. The full project manual — five chapters and twenty figures, explaining the systems from the configuration up — is a
+  <a href="assets/xiang-li-project-manual.pdf">30-page PDF</a>. The art production log is a <a href="art/">separate page</a>.
 </footer>
 
 <div id="lb" aria-hidden="true">
@@ -266,39 +266,57 @@
   var lbImg = lb.querySelector("img");
   var cap = lb.querySelector(".cap");
   var openLink = lb.querySelector(".open");
-
   function open(src, text) {
-    lbImg.src = src;
-    openLink.href = src;
-    cap.textContent = text || "";
-    lb.classList.add("on");
-    lb.setAttribute("aria-hidden", "false");
+    lbImg.src = src; openLink.href = src; cap.textContent = text || "";
+    lb.classList.add("on"); lb.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
   }
   function close() {
-    lb.classList.remove("on");
-    lb.setAttribute("aria-hidden", "true");
-    lbImg.removeAttribute("src");
-    document.body.style.overflow = "";
+    lb.classList.remove("on"); lb.setAttribute("aria-hidden", "true");
+    lbImg.removeAttribute("src"); document.body.style.overflow = "";
+  }
+  document.querySelectorAll("figure").forEach(function (fig) {
+    var img = fig.querySelector("img"); if (!img) return;
+    var c = fig.querySelector("figcaption");
+    img.addEventListener("click", function (e) { e.preventDefault(); open(img.getAttribute("src"), c ? c.textContent : ""); });
+  });
+  lb.addEventListener("click", function (e) { if (e.target === lb || e.target.classList.contains("close")) close(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && lb.classList.contains("on")) close(); });
+})();
+</script>
+
+<script>
+/* Language switch that keeps your place: carry the current section in the URL hash and re-assert it on load */
+(function () {
+  function currentAnchor() {
+    var secs = document.querySelectorAll("section[id]");
+    var y = window.scrollY + 90, best = "";
+    for (var i = 0; i < secs.length; i++) { if (secs[i].offsetTop <= y) best = secs[i].id; }
+    return best || "top";
   }
 
-  document.querySelectorAll("figure").forEach(function (fig) {
-    var img = fig.querySelector("img");
-    if (!img) return;
-    var captionEl = fig.querySelector("figcaption");
-    var caption = captionEl ? captionEl.textContent : "";
-    img.addEventListener("click", function (e) {
-      e.preventDefault();
-      open(img.getAttribute("src"), caption);
+  var link = document.getElementById("langSwitch");
+  if (link) {
+    var base = (link.getAttribute("href") || "").split("#")[0];
+    link.addEventListener("click", function () {
+      var id = currentAnchor();
+      link.setAttribute("href", id === "top" ? base : base + "#" + id);
     });
-  });
+  }
 
-  lb.addEventListener("click", function (e) {
-    if (e.target === lb || e.target.classList.contains("close")) close();
-  });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && lb.classList.contains("on")) close();
-  });
+  if ("scrollRestoration" in history) { try { history.scrollRestoration = "manual"; } catch (e) {} }
+
+  function jump() {
+    var id = (location.hash || "").replace("#", "");
+    if (!id || id === "top") return;
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ block: "start" });
+  }
+
+  jump();
+  window.addEventListener("load", jump);
+  window.addEventListener("pageshow", jump);
+  setTimeout(jump, 400);
 })();
 </script>
 

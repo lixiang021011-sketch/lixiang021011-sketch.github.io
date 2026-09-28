@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Icon Studio · 从建仓到第一章定稿</title>
+    <meta
+      name="description"
+      content="图标工坊 2026-09-20 建仓。从 GPT Image 十件探针、接到本地 Comfy，到 FallenAngel 第一章留下的稿。"
+    />
+    <style>
+      :root {
+        --ink: #141414;
+        --paper: #f4f1ea;
+        --line: #d9d3c6;
+        --mute: #6b665c;
+        --fg: #1c1b18;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--fg);
+        font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.55;
+      }
+      a { color: inherit; }
+      img { max-width: 100%; height: auto; display: block; }
+      .bar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 24px;
+        background: #efece4;
+        border-bottom: 1px solid var(--line);
+      }
+      nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
+      .page { max-width: 1040px; margin: 0 auto; padding: 32px 24px 80px; }
+      h1 { font-size: 28px; font-weight: 650; margin: 0 0 8px; }
+      h2 { font-size: 20px; font-weight: 650; margin: 0 0 8px; }
+      p { margin: 0 0 12px; }
+      .mute { color: var(--mute); }
+      .facts {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+        margin: 16px 0 0;
+        color: var(--mute);
+        font-size: 14px;
+      }
+      .facts strong { color: var(--fg); }
+      section {
+        margin: 40px 0;
+        padding-top: 8px;
+        scroll-margin-top: 56px;
+      }
+      .step {
+        border-top: 1px solid var(--line);
+        padding-top: 24px;
+      }
+      .grid {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .c5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      figure { margin: 0; }
+      figure img {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: contain;
+        background: #ddd8cc;
+        cursor: zoom-in;
+      }
+      .wide img { object-fit: cover; }
+      figcaption {
+        margin-top: 6px;
+        font-size: 13px;
+        color: var(--mute);
+      }
+      figcaption strong { color: var(--fg); font-weight: 600; display: block; }
+      .verdict {
+        margin-top: 12px;
+        padding: 10px 12px;
+        background: #e8e3d8;
+        font-size: 14px;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+        color: var(--mute);
+        font-size: 13px;
+      }
+      dialog {
+        border: 1px solid var(--line);
+        background: #111;
+        padding: 0;
+        max-width: min(880px, 94vw);
+      }
+      dialog::backdrop { background: rgb(0 0 0 / 68%); }
+      dialog img { width: 100%; cursor: zoom-out; }
+      @media (max-width: 800px) {
+        .page { padding: 20px 14px 64px; }
+        .c2, .c3, .c4, .c5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bar">
+      <strong>Icon Studio · 过程记录</strong>
+      <nav>
+        <a href="#born">诞生</a>
+        <a href="#log">过程</a>
+        <a href="#kept">成果</a>
+        <a href="../zh/#art">← 返回作品集</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <h1>工坊从哪来，图是怎么留下来的</h1>
+      <p class="mute">
+        2026-09-20 建的 Icon Studio。要给 Unity 出 HUD 图标，不能模型出一张就进游戏。
+        所以先做工坊：风格圣经、出候选、规格检查、人工审阅、版本、导出。下面按那天起到现在排，用当时的图。
+      </p>
+      <ul class="facts">
+        <li>建仓 <strong>2026-09-20</strong></li>
+        <li>首批 GPT Image <strong>30</strong> 张（10 件 × 3 变体）</li>
+        <li>现在库里 <strong>160</strong> 任务 / <strong>299</strong> 候选</li>
+        <li>这页成果 <strong>13</strong> 件 + <strong>8</strong> 处</li>
+      </ul>
+      <p class="mute" style="margin-top:16px">
+        FallenAngel 设计稿十六件里，谱架、铅笔、抄歌本这三件有稿，成果段不放。
+      </p>
+
+      <section id="born">
+        <article class="step">
+          <h2>1. 为什么要做工坊</h2>
+          <p class="mute">
+            当天对话里项目定名 icon-studio，导出优先对接 Unity。README 写的流程是：风格圣经 →
+            GPT Image 2.5 出候选 → 规格检查 → <strong>人工选择/精修</strong> → 版本 → 导出。
+            「生成 10 资产候选」会打真实接口，停在人工选择，不会自动采用。
+          </p>
+          <p class="mute">
+            工坊页面就是按这个闸门拆的：任务、审阅、风格圣经、对照实验、导出。规格检查看画布、透明底、主体、安全边距。
+            按钮/边框另走精确 SVG，道具图标不走 SVG。
+          </p>
+          <p class="verdict">闸门从第一天就定了：模型出草稿，人点 keep，才许进 Unity。</p>
+        </article>
+
+        <article class="step">
+          <h2>2. 第一天：GPT Image，十个代表件</h2>
+          <p class="mute">
+            项目当时叫「水月肉鸽」，风格圣经「水月深蓝」。探针是通用 HUD：长剑、盾、药水、金币、生命、地图、宝箱、星章、法典、钥匙。
+            每件三张（典范 / 纹饰 / 克制）。模型 gpt-image-2.5-flare，quality max，单张约 $0.21。时间 11:11–11:18 UTC。
+          </p>
+          <p class="mute">长剑三变体</p>
+          <div class="grid c3">
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-sword.jpg" width="720" height="720" alt="长剑典范" /><figcaption><strong>典范</strong></figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-sword-orn.jpg" width="720" height="720" alt="长剑纹饰" /><figcaption><strong>纹饰</strong></figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-sword-quiet.jpg" width="720" height="720" alt="长剑克制" /><figcaption><strong>克制</strong></figcaption></figure>
+          </div>
+          <p class="mute" style="margin-top:16px">十件典范</p>
+          <div class="grid c5">
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-sword.jpg" width="720" height="720" alt="长剑" /><figcaption>长剑</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-shield.jpg" width="720" height="720" alt="盾牌" /><figcaption>盾牌</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-potion.jpg" width="720" height="720" alt="药水" /><figcaption>药水</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-coin.jpg" width="720" height="720" alt="金币" /><figcaption>金币</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-heart.jpg" width="720" height="720" alt="生命" /><figcaption>生命</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-map.jpg" width="720" height="720" alt="地图" /><figcaption>地图</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-chest.jpg" width="720" height="720" alt="宝箱" /><figcaption>宝箱</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-star.jpg" width="720" height="720" alt="星章" /><figcaption>星章</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-book.jpg" width="720" height="720" alt="法典" /><figcaption>法典</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pilot-key.jpg" width="720" height="720" alt="钥匙" /><figcaption>钥匙</figcaption></figure>
+          </div>
+          <p class="verdict">判定：能出、能认。按张付钱。风格是深海 HUD，不是后来要带上路的东西。</p>
+        </article>
+
+        <article class="step">
+          <h2>3. 当天下午接本地 Comfy</h2>
+          <p class="mute">
+            18:42 管线自检：Comfy 还没起来（fetch failed），精确 SVG 和 Unity 包过了。
+            20:50 第一张本机 SDXL + 自制 LoRA「铜绿纹章」：透明底过了，安全边距没过（包围盒贴边）。
+          </p>
+          <div class="grid c2">
+            <figure><img loading="lazy" decoding="async" src="assets/comfy-patina.jpg" width="720" height="720" alt="铜绿纹章第一张" /><figcaption><strong>live-sdxl-lora</strong>铜绿纹章 · 边距未过</figcaption></figure>
+          </div>
+          <p class="verdict">判定：本地能出。自制纹章补丁物体识别偏弱。云端按张付的路不再作为主路径。</p>
+        </article>
+
+        <article class="step">
+          <h2>4. 水月圣经叠图标 LoRA</h2>
+          <p class="mute">
+            仍用剑 / 药水 / 音符。先叠 gameicon_sdxl，再对照 RPG Item Icons、RPG Weapon Icons、Underwater。
+          </p>
+          <div class="grid c3">
+            <figure><img loading="lazy" decoding="async" src="assets/gicon-sword.jpg" width="720" height="720" alt="gameicon 长剑" /><figcaption><strong>gameicon</strong>长剑</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/gicon-potion.jpg" width="720" height="720" alt="gameicon 药水" /><figcaption><strong>gameicon</strong>药水</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/gicon-note.jpg" width="720" height="720" alt="gameicon 音符" /><figcaption><strong>gameicon</strong>音符</figcaption></figure>
+          </div>
+          <div class="grid c3" style="margin-top:16px">
+            <figure><img loading="lazy" decoding="async" src="assets/cmp-rpg-item.jpg" width="720" height="720" alt="RPG Item 长剑" /><figcaption><strong>RPG Item Icons</strong></figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/cmp-rpg-weapon.jpg" width="720" height="720" alt="RPG Weapon 长剑" /><figcaption><strong>RPG Weapon Icons</strong></figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/cmp-underwater.jpg" width="720" height="720" alt="Underwater 长剑" /><figcaption><strong>Underwater</strong></figcaption></figure>
+          </div>
+          <p class="verdict">判定：本地补丁能改画风。水月深海 + 商店图标，还是不像随身物件。于是换题材：复读机、热水袋，并开始扫气质 LoRA。</p>
+        </article>
+      </section>
+
+      <section id="log">
+        <article class="step">
+          <h2>5. 先换气质 LoRA</h2>
+          <p class="mute">同一件复读机，四把材质/年代 LoRA。看的是「像不像这个游戏的东西」，还不是图鉴规格。</p>
+          <div class="grid c4">
+            <figure><img loading="lazy" decoding="async" src="assets/dc-gum.jpg" width="720" height="720" alt="90's GUM 复读机" /><figcaption><strong>90's GUM</strong>千禧梦核</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/dc-toy.jpg" width="720" height="720" alt="Plastic Toy 复读机" /><figcaption><strong>Plastic Toy</strong>塑料玩具</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/dc-sticker.jpg" width="720" height="720" alt="Sticker Sheet 复读机" /><figcaption><strong>Sticker Sheet</strong>贴纸表</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/dc-photo.jpg" width="720" height="720" alt="Old Digital Photo 复读机" /><figcaption><strong>Old Digital Photo</strong>旧数码</figcaption></figure>
+          </div>
+          <p class="verdict">判定：气质有了，还不是单件图鉴。</p>
+        </article>
+
+        <article class="step">
+          <h2>6. 再换图标笔</h2>
+          <p class="mute">Game Icon Forge、RPG Item Icons。短提示，测补丁本身。</p>
+          <div class="grid c2">
+            <figure><img loading="lazy" decoding="async" src="assets/dci-forge.jpg" width="720" height="720" alt="Game Icon Forge 复读机" /><figcaption><strong>Game Icon Forge</strong></figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/dci-rpg.jpg" width="720" height="720" alt="RPG Item Icons 复读机" /><figcaption><strong>RPG Item Icons</strong></figcaption></figure>
+          </div>
+          <p class="verdict">判定：像商店图标，不像会带上路的东西。</p>
+        </article>
+
+        <article class="step">
+          <h2>7. 贴纸单贴 / 小表</h2>
+          <p class="mute">Sticker Sheet。试过切开散图这条路。</p>
+          <div class="grid c2">
+            <figure><img loading="lazy" decoding="async" src="assets/st-single.jpg" width="720" height="720" alt="复读机单贴" /><figcaption><strong>单贴</strong></figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/st-sheet.jpg" width="720" height="720" alt="复读机小表" /><figcaption><strong>小表</strong></figcaption></figure>
+          </div>
+          <p class="verdict">判定：能切，但是贴纸，不是藏品。</p>
+        </article>
+
+        <article class="step">
+          <h2>8. 换手绘介质</h2>
+          <p class="mute">同一件，插画 / 马克笔 / 水粉。</p>
+          <div class="grid c3">
+            <figure><img loading="lazy" decoding="async" src="assets/pt-illust.jpg" width="720" height="720" alt="插画复读机" /><figcaption><strong>插画</strong></figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pt-marker.jpg" width="720" height="720" alt="马克笔复读机" /><figcaption><strong>马克笔</strong></figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pt-gouache.jpg" width="720" height="720" alt="水粉复读机" /><figcaption><strong>水粉</strong></figcaption></figure>
+          </div>
+          <p class="verdict">判定：水粉留下。后面物件都走水粉 LoRA 图生图，不再换介质。</p>
+        </article>
+
+        <article class="step">
+          <h2>9. 实物图生图，扫 denoise</h2>
+          <p class="mute">热水袋。太低像照片，太高身份漂。后来藏品批次也是同一套扫法（耳机 0.55 / 0.64 / 0.72）。</p>
+          <div class="grid c4">
+            <figure><img loading="lazy" decoding="async" src="assets/hw-042.jpg" width="720" height="720" alt="热水袋 denoise 0.42" /><figcaption><strong>0.42</strong>还是照片</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/hw-055.jpg" width="720" height="720" alt="热水袋 denoise 0.55" /><figcaption><strong>0.55</strong></figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/hw-068.jpg" width="720" height="720" alt="热水袋 denoise 0.68" /><figcaption><strong>0.68</strong>留下</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/hw-075.jpg" width="720" height="720" alt="热水袋 denoise 0.75" /><figcaption><strong>0.75</strong>漂了</figcaption></figure>
+          </div>
+          <div class="grid c3" style="margin-top:16px">
+            <figure><img loading="lazy" decoding="async" src="assets/hp-t0.jpg" width="720" height="720" alt="耳机 0.55" /><figcaption><strong>耳机 0.55</strong>留下</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/hp-t1.jpg" width="720" height="720" alt="耳机 0.64" /><figcaption><strong>0.64</strong></figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/hp-t2.jpg" width="720" height="720" alt="耳机 0.72" /><figcaption><strong>0.72</strong></figcaption></figure>
+          </div>
+          <p class="verdict">判定：按件选 denoise，不是全局一个数。热水袋留 0.68，耳机留 0.55。</p>
+        </article>
+
+        <article class="step">
+          <h2>10. 扣透明底，退回</h2>
+          <p class="mute">试过把纸底扣掉。复读机早期 lock set 扣过一轮；十六件定稿后又灌过一轮。主体被咬，void 从目录里丢掉，keep 仍是实心底。</p>
+          <div class="grid c2">
+            <figure><img loading="lazy" decoding="async" src="assets/keep-repeater.jpg" width="720" height="720" alt="复读机实心底" /><figcaption><strong>复读机 keep</strong>实心底</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/void-repeater.jpg" width="720" height="720" alt="复读机扣底" /><figcaption><strong>复读机 void</strong>扣过</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/keep-guitar.jpg" width="720" height="720" alt="吉他实心底" /><figcaption><strong>吉他 keep</strong>实心底</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/void-guitar.jpg" width="720" height="720" alt="吉他扣底" /><figcaption><strong>吉他 void</strong>主体被咬</figcaption></figure>
+          </div>
+          <p class="verdict">判定：扣底不做。进游戏的是实心底那张。</p>
+        </article>
+
+        <article class="step">
+          <h2>11. 演奏房水彩，三轮</h2>
+          <p class="mute">场景不用水粉 LoRA，SDXL 文生。地名来自设计稿 §3.2。八处都跑了 t0 / t1 / t2，这里放两处。</p>
+          <p class="mute">便利店门口</p>
+          <div class="grid c3 wide">
+            <figure><img loading="lazy" decoding="async" src="assets/sf-t0.jpg" width="720" height="720" alt="便利店 t0" /><figcaption><strong>t0</strong>媒介对，还是线描</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/sf-t1.jpg" width="720" height="720" alt="便利店 t1" /><figcaption><strong>t1</strong>有颜色，场是空的</figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/sf-t2.jpg" width="720" height="720" alt="便利店 t2" /><figcaption><strong>t2</strong>留下。货架、自行车</figcaption></figure>
+          </div>
+          <p class="mute" style="margin-top:16px">没人的泳池边</p>
+          <div class="grid c3 wide">
+            <figure><img loading="lazy" decoding="async" src="assets/pool-t0.jpg" width="720" height="720" alt="泳池 t0" /><figcaption><strong>t0</strong></figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pool-t1.jpg" width="720" height="720" alt="泳池 t1" /><figcaption><strong>t1</strong></figcaption></figure>
+            <figure><img loading="lazy" decoding="async" src="assets/pool-t2.jpg" width="720" height="720" alt="泳池 t2" /><figcaption><strong>t2</strong>留下</figcaption></figure>
+          </div>
+          <p class="verdict">判定：八处都留 t2。商店、休息房还没出。</p>
+        </article>
+      </section>
+
+      <section id="kept">
+        <h2>留下的稿</h2>
+        <p class="mute">人点过 keep / 代表稿的。谱架、铅笔、抄歌本不在这里。</p>
+        <p class="mute">物件 · 水粉静物 · 13 件</p>
+        <div class="grid c4">
+          <figure><img loading="lazy" decoding="async" src="assets/gear-04.jpg" width="720" height="720" alt="耳机" /><figcaption>耳机</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/gear-05.jpg" width="720" height="720" alt="摆针节拍器" /><figcaption>摆针节拍器</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/gear-06.jpg" width="720" height="720" alt="热水袋" /><figcaption>热水袋</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/gear-07.jpg" width="720" height="720" alt="电子节拍器" /><figcaption>电子节拍器</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/gear-08.jpg" width="720" height="720" alt="耳塞" /><figcaption>耳塞</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/gear-09.jpg" width="720" height="720" alt="铁盒拨片" /><figcaption>铁盒拨片</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/gear-10.jpg" width="720" height="720" alt="透明胶" /><figcaption>透明胶</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/gear-11.jpg" width="720" height="720" alt="备用弦" /><figcaption>备用弦</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/gear-12.jpg" width="720" height="720" alt="喉糖" /><figcaption>喉糖</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/gear-13.jpg" width="720" height="720" alt="创可贴" /><figcaption>创可贴</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/gear-14.jpg" width="720" height="720" alt="旧收音机旋钮" /><figcaption>旧收音机旋钮</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/gear-15.jpg" width="720" height="720" alt="备用的那把" /><figcaption>备用的那把</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/gear-16.jpg" width="720" height="720" alt="复读机" /><figcaption>复读机</figcaption></figure>
+        </div>
+        <p class="mute" style="margin-top:28px">场景 · 水彩 · 8 处</p>
+        <div class="grid c2 wide">
+          <figure><img loading="lazy" decoding="async" src="assets/place-storefront.jpg" width="720" height="720" alt="便利店门口" /><figcaption>便利店门口</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/place-parking.jpg" width="720" height="720" alt="停车场" /><figcaption>停车场</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/place-corridor.jpg" width="720" height="720" alt="走廊" /><figcaption>走廊</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/place-overpass.jpg" width="720" height="720" alt="天桥下" /><figcaption>天桥下</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/place-rooftop.jpg" width="720" height="720" alt="天台" /><figcaption>天台</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/place-schoolback.jpg" width="720" height="720" alt="学校后门" /><figcaption>学校后门</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/place-pool.jpg" width="720" height="720" alt="没人的泳池边" /><figcaption>没人的泳池边</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/place-mall.jpg" width="720" height="720" alt="商场中庭" /><figcaption>商场中庭</figcaption></figure>
+        </div>
+      </section>
+
+      <footer>
+        <p>规则一直是：设计稿点名要什么，模型出一批，并排看，不像的整栏拿掉。生成可以不停，进游戏的只有点过名的那一张。</p>
+        <p>FallenAngel 第一章是这条管线后来的活。工坊本身从水月 HUD 探针开始。</p>
+        <p class="mute">回到作品集：<a href="../zh/#design">玩法设计</a> · <a href="../zh/#impl">玩法实现</a> · <a href="../zh/#system">系统实现</a> · <a href="../zh/#music">音乐管线</a> · <a href="../zh/">总览</a></p>
+        <p>Icon Studio · 2026-09-20 起</p>
+      </footer>
+    </main>
+
+    <dialog id="zoom"><img loading="lazy" decoding="async" alt="" /></dialog>
+    <script>
+      const zoom = document.getElementById("zoom");
+      const zoomImg = zoom.querySelector("img");
+      document.querySelectorAll("figure img").forEach((img) => {
+        img.addEventListener("click", () => {
+          zoomImg.src = img.currentSrc || img.src;
+          zoomImg.alt = img.alt;
+          zoom.showModal();
+        });
+      });
+      zoom.addEventListener("click", () => zoom.close());
+    </script>
+    <script>
+      /* 返回链接跟随来源语言：从英文页进来就回英文页，从中文页进来就回中文页 */
+      (function () {
+        var ref = document.referrer || "";
+        var toEn = ref !== "" && ref.indexOf("/zh") === -1;
+        if (!toEn) return;
+        document.querySelectorAll('a[href^="../zh/"]').forEach(function (a) {
+          a.setAttribute("href", a.getAttribute("href").replace("../zh/", "../"));
+        });
+        var back = document.querySelector('header.bar a[href^="../"]');
+        document.querySelectorAll("header.bar nav a").forEach(function (a) {
+          if (a.textContent.indexOf("返回作品集") !== -1) a.textContent = "← Back to portfolio";
+        });
+      })();
+    </script>
+  </body>
+</html>
